@@ -31,8 +31,10 @@ func tabBarViewsToViewControllers(views: [TabBarViewData]) -> [UINavigationContr
 private func createNavigationControllerForBaseTabBarView(tabbarViewItem: TabBarViewData) -> UINavigationController{
     
     let navigationController = UINavigationController(rootViewController: Wireframe.instance.getViewController(tabbarViewItem.name))
+    
     navigationController.navigationBar.barTintColor = UIColor(red: 0, green: 122.0/255, blue: 1, alpha: 1)
     navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+    navigationController.navigationBar.tintColor = UIColor.whiteColor()
     
     navigationController.tabBarItem = UITabBarItem(title: tabbarViewItem.title, image: UIImage(named: tabbarViewItem.iconTitle)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: nil)
     

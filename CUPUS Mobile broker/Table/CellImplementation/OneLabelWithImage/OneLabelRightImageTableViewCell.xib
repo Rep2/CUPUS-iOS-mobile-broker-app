@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="OneLabelRightImageTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="OneLabelRightImageTableViewCell" id="Grz-Ds-FVt" customClass="SingleLabelWithImageCell" customModule="CUPUS_Mobile_broker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Grz-Ds-FVt" id="8cd-Yv-vfl">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh0-tv-WPT">
+                        <rect key="frame" x="16" y="9" width="254" height="25"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="25C-6T-Ews">
+                        <rect key="frame" x="278" y="5" width="34" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="NNk-R9-Hz2"/>
+                            <constraint firstAttribute="width" constant="34" id="UDf-m4-3YI"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="22"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kh0-tv-WPT" firstAttribute="centerY" secondItem="8cd-Yv-vfl" secondAttribute="centerY" id="JH9-bT-TBs"/>
+                    <constraint firstItem="25C-6T-Ews" firstAttribute="trailing" secondItem="8cd-Yv-vfl" secondAttribute="trailingMargin" id="JOE-g1-D4d"/>
+                    <constraint firstItem="25C-6T-Ews" firstAttribute="centerY" secondItem="8cd-Yv-vfl" secondAttribute="centerY" id="JrJ-a1-Cgc"/>
+                    <constraint firstItem="kh0-tv-WPT" firstAttribute="leading" secondItem="8cd-Yv-vfl" secondAttribute="leading" constant="16" id="VEM-r4-J5N"/>
+                    <constraint firstItem="25C-6T-Ews" firstAttribute="leading" secondItem="kh0-tv-WPT" secondAttribute="trailing" constant="8" id="mud-yN-xIX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="firstImage" destination="25C-6T-Ews" id="UUo-rv-NDP"/>
+                <outlet property="firstLabel" destination="kh0-tv-WPT" id="vNG-ut-bd1"/>
+            </connections>
+            <point key="canvasLocation" x="565" y="347"/>
+        </tableViewCell>
+    </objects>
+</document>

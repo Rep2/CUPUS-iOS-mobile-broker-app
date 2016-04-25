@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--TableView-->
+        <scene sceneID="M51-kl-0VE">
+            <objects>
+                <viewController storyboardIdentifier="GenericTableViewController" title="TableView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I0K-HY-uB4" customClass="GenericTableViewController" customModule="ProjektWSTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YuJ-un-2yq"/>
+                        <viewControllerLayoutGuide type="bottom" id="uah-x8-400"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DjA-CA-KnO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="8Jq-az-Qhz" customClass="IRTableView" customModule="ProjektWSTest" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8Jq-az-Qhz" secondAttribute="trailing" id="J4p-Gy-foS"/>
+                            <constraint firstItem="8Jq-az-Qhz" firstAttribute="top" secondItem="DjA-CA-KnO" secondAttribute="top" constant="64" id="Nt7-Zq-6Gu"/>
+                            <constraint firstItem="uah-x8-400" firstAttribute="top" secondItem="8Jq-az-Qhz" secondAttribute="bottom" id="P5f-9h-30D"/>
+                            <constraint firstItem="8Jq-az-Qhz" firstAttribute="leading" secondItem="DjA-CA-KnO" secondAttribute="leading" id="pjP-PZ-vpA"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="table" destination="8Jq-az-Qhz" id="DIn-dV-sL5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tp2-Dq-WPi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="563" y="220"/>
+        </scene>
+    </scenes>
+</document>
