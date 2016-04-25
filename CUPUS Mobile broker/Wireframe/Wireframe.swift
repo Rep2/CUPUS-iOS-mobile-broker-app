@@ -41,3 +41,5 @@ private let tabBarViewData = [
     TabBarViewData(name: .Map, title: "Subscriptions", iconTitle: "Subscribe"),
     TabBarViewData(name: .Map, title: "Settings", iconTitle: "Settings"),
 ]
+
+public let googleMapsAPIKey = "AIzaSyC-zJ051bJkPMRs7YYIS5-CTf63PESAoqE"
