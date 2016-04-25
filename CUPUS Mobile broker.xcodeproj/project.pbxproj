@@ -14,6 +14,9 @@
 		3EBD20DF1CCE205100905452 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EBD20DD1CCE205100905452 /* LaunchScreen.storyboard */; };
 		3EBD20EA1CCE205100905452 /* CUPUS_Mobile_brokerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD20E91CCE205100905452 /* CUPUS_Mobile_brokerTests.swift */; };
 		3EBD20F51CCE205100905452 /* CUPUS_Mobile_brokerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD20F41CCE205100905452 /* CUPUS_Mobile_brokerUITests.swift */; };
+		3EBD210B1CCE21BA00905452 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD21091CCE21BA00905452 /* Wireframe.swift */; };
+		3EBD210F1CCE2C0F00905452 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD210D1CCE2C0F00905452 /* BaseNavigationViewController.swift */; };
+		3EBD21101CCE2C0F00905452 /* TabbarControllerCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD210E1CCE2C0F00905452 /* TabbarControllerCreator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		3EBD20F01CCE205100905452 /* CUPUS Mobile brokerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CUPUS Mobile brokerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EBD20F41CCE205100905452 /* CUPUS_Mobile_brokerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUPUS_Mobile_brokerUITests.swift; sourceTree = "<group>"; };
 		3EBD20F61CCE205100905452 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EBD21091CCE21BA00905452 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
+		3EBD210D1CCE2C0F00905452 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
+		3EBD210E1CCE2C0F00905452 /* TabbarControllerCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarControllerCreator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 		3EBD20D31CCE205100905452 /* CUPUS Mobile broker */ = {
 			isa = PBXGroup;
 			children = (
+				3EBD21071CCE21BA00905452 /* Wireframe */,
 				3EBD20D41CCE205100905452 /* AppDelegate.swift */,
 				3EBD20D61CCE205100905452 /* ViewController.swift */,
 				3EBD20D81CCE205100905452 /* Main.storyboard */,
@@ -123,6 +130,24 @@
 				3EBD20F61CCE205100905452 /* Info.plist */,
 			);
 			path = "CUPUS Mobile brokerUITests";
+			sourceTree = "<group>";
+		};
+		3EBD21071CCE21BA00905452 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				3EBD210C1CCE2C0F00905452 /* TabbarController */,
+				3EBD21091CCE21BA00905452 /* Wireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		3EBD210C1CCE2C0F00905452 /* TabbarController */ = {
+			isa = PBXGroup;
+			children = (
+				3EBD210D1CCE2C0F00905452 /* BaseNavigationViewController.swift */,
+				3EBD210E1CCE2C0F00905452 /* TabbarControllerCreator.swift */,
+			);
+			path = TabbarController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +218,7 @@
 				TargetAttributes = {
 					3EBD20D01CCE205000905452 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = MDX989Y6D8;
 					};
 					3EBD20E41CCE205100905452 = {
 						CreatedOnToolsVersion = 7.3;
@@ -256,8 +282,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EBD210B1CCE21BA00905452 /* Wireframe.swift in Sources */,
 				3EBD20D71CCE205100905452 /* ViewController.swift in Sources */,
+				3EBD21101CCE2C0F00905452 /* TabbarControllerCreator.swift in Sources */,
 				3EBD20D51CCE205100905452 /* AppDelegate.swift in Sources */,
+				3EBD210F1CCE2C0F00905452 /* BaseNavigationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +428,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "CUPUS Mobile broker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "FER.CUPUS-Mobile-broker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -410,7 +441,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "CUPUS Mobile broker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "FER.CUPUS-Mobile-broker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
