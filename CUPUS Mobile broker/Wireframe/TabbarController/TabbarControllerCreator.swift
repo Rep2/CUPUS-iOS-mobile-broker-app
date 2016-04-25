@@ -34,7 +34,10 @@ private func createNavigationControllerForBaseTabBarView(tabbarViewItem: TabBarV
     navigationController.navigationBar.barTintColor = UIColor(red: 0, green: 122.0/255, blue: 1, alpha: 1)
     navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
     
-    navigationController.tabBarItem = UITabBarItem(title: tabbarViewItem.title, image: UIImage(named: tabbarViewItem.iconTitle), selectedImage: nil)
+    navigationController.tabBarItem = UITabBarItem(title: tabbarViewItem.title, image: UIImage(named: tabbarViewItem.iconTitle)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: nil)
+    
+    navigationController.tabBarItem.selectedImage = UIImage(named: tabbarViewItem.iconTitle)
+    
     
     return navigationController;
 }

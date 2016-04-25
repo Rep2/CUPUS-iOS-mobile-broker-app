@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = wierframe.baseController
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor(red: 200/255.0, green: 200/255.0, blue: 200/255.0, alpha: 1)], forState: UIControlState.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1)], forState: UIControlState.Normal)
         
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: UIControlState.Selected)
         

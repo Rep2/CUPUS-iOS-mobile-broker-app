@@ -37,7 +37,7 @@ class Wireframe{
 }
 
 private let tabBarViewData = [
-    TabBarViewData(name: .Map, title: "Publications", iconTitle: "icon"),
-    TabBarViewData(name: .Map, title: "Subscriptions", iconTitle: "icon"),
-    TabBarViewData(name: .Map, title: "Settings", iconTitle: "icon"),
+    TabBarViewData(name: .Map, title: "Publications", iconTitle: "Publish"),
+    TabBarViewData(name: .Map, title: "Subscriptions", iconTitle: "Subscribe"),
+    TabBarViewData(name: .Map, title: "Settings", iconTitle: "Settings"),
 ]
