@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Subscriptions-->
@@ -23,6 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="243" y="399"/>
         </scene>
         <!--Publications-->
         <scene sceneID="a8j-Oz-L32">
@@ -35,10 +37,27 @@
                     <view key="view" contentMode="scaleToFill" id="jLW-oC-jN3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="I6g-01-ddD" customClass="IRTableView" customModule="CUPUS_Mobile_broker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I6g-01-ddD" firstAttribute="top" secondItem="jLW-oC-jN3" secondAttribute="top" constant="64" id="08m-T9-Yg3"/>
+                            <constraint firstAttribute="trailing" secondItem="I6g-01-ddD" secondAttribute="trailing" id="Vob-ro-0nr"/>
+                            <constraint firstItem="I6g-01-ddD" firstAttribute="leading" secondItem="jLW-oC-jN3" secondAttribute="leading" id="g7l-SD-9JB"/>
+                            <constraint firstItem="BIl-eS-0Xo" firstAttribute="top" secondItem="I6g-01-ddD" secondAttribute="bottom" id="vlX-3e-JeT"/>
+                        </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="table" destination="I6g-01-ddD" id="IJL-XV-0zf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W63-po-811" sceneMemberID="firstResponder"/>
             </objects>
@@ -63,6 +82,83 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFi-nd-ewi" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1002" y="399"/>
+        </scene>
+        <!--Audio recorder-->
+        <scene sceneID="KS0-2u-Srz">
+            <objects>
+                <viewController storyboardIdentifier="AudioRecorderView" title="Audio recorder" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qqa-Oj-ivs" customClass="AudioRecorderViewController" customModule="CUPUS_Mobile_broker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pxa-oy-cVh"/>
+                        <viewControllerLayoutGuide type="bottom" id="ska-4s-84L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C3d-dc-lpa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio recorderd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESW-vQ-3q8">
+                                <rect key="frame" x="16" y="76" width="288" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxv-Yf-grG">
+                                <rect key="frame" x="16" y="103" width="288" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60U-6M-6mu">
+                                <rect key="frame" x="18" y="138" width="284" height="40"/>
+                                <color key="backgroundColor" red="0.15294117647058825" green="0.68235294117647061" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9Ih-wB-xbQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startStopButtonPressed:" destination="qqa-Oj-ivs" eventType="touchUpInside" id="aLB-aU-GNI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Value: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbg-TI-qJf">
+                                <rect key="frame" x="16" y="217" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmI-hq-Ep8">
+                                <rect key="frame" x="16" y="241" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ESW-vQ-3q8" secondAttribute="trailing" constant="16" id="54C-L3-l1x"/>
+                            <constraint firstItem="60U-6M-6mu" firstAttribute="leading" secondItem="C3d-dc-lpa" secondAttribute="leading" constant="18" id="AOl-NL-ctI"/>
+                            <constraint firstItem="ESW-vQ-3q8" firstAttribute="leading" secondItem="C3d-dc-lpa" secondAttribute="leading" constant="16" id="I8w-kh-cl7"/>
+                            <constraint firstItem="60U-6M-6mu" firstAttribute="top" secondItem="xxv-Yf-grG" secondAttribute="bottom" constant="17" id="Jj0-X5-moG"/>
+                            <constraint firstItem="ESW-vQ-3q8" firstAttribute="top" secondItem="C3d-dc-lpa" secondAttribute="topMargin" constant="76" id="YrF-U8-Znr"/>
+                            <constraint firstAttribute="trailing" secondItem="60U-6M-6mu" secondAttribute="trailing" constant="18" id="d41-CA-KHT"/>
+                            <constraint firstItem="xxv-Yf-grG" firstAttribute="top" secondItem="ESW-vQ-3q8" secondAttribute="bottom" constant="3" id="fNC-u4-v5Z"/>
+                            <constraint firstItem="xxv-Yf-grG" firstAttribute="leading" secondItem="C3d-dc-lpa" secondAttribute="leading" constant="16" id="vxl-Qo-Qc0"/>
+                            <constraint firstAttribute="trailing" secondItem="xxv-Yf-grG" secondAttribute="trailing" constant="16" id="zn6-QU-tou"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
+                    <connections>
+                        <outlet property="isAvailableLabel" destination="xxv-Yf-grG" id="w2l-qw-QvW"/>
+                        <outlet property="startstopButton" destination="60U-6M-6mu" id="vVj-tE-y08"/>
+                        <outlet property="timeLabel" destination="XmI-hq-Ep8" id="HEK-nA-kIy"/>
+                        <outlet property="valueLabel" destination="wbg-TI-qJf" id="q2l-8u-aG4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Evv-1z-nSE" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="623" y="1033"/>
         </scene>
     </scenes>
 </document>

@@ -10,9 +10,13 @@ import UIKit
 
 /// Registerd view controllers of Main storyboard
 enum RegisteredViewControllers: String{
-    case  Map = "Map"
+    case Map = "Map"
+    
     case Publications = "Publications"
+    case AudioRecorder = "AudioRecorderView"
+    
     case Settings = "Settings"
+
 }
 
 /// Base wireframe. For customization split into multiple
@@ -25,6 +29,8 @@ class Wireframe{
     var tabBarNavigationControllers: [UINavigationController]!
     
     var locationManager: LocationManager!
+    
+    var topController:[UIViewController] = []
     
     init(){
         Wireframe.instance = self
@@ -42,10 +48,18 @@ class Wireframe{
     
     func pushViewControllerToTab(controller: UIViewController, tab: Int, animated: Bool = true){
         tabBarNavigationControllers[tab].pushViewController(controller, animated: animated)
+        topController.append(controller)
+    }
+    
+    func pushViewControllerToTab(name: RegisteredViewControllers, tab: Int, animated: Bool = true){
+        let controller = getViewController(name)
+        tabBarNavigationControllers[tab].pushViewController(controller, animated: animated)
+        topController.append(controller)
     }
     
     func popViewController(tab: Int, animated: Bool = true){
         tabBarNavigationControllers[tab].popViewControllerAnimated(animated)
+        topController.removeLast()
     }
     
 }
@@ -53,7 +67,6 @@ class Wireframe{
 private let tabBarViewData = [
     TabBarViewData(name: .Map, title: "Subscriptions", iconTitle: "Subscribe"),
     TabBarViewData(name: .Publications, title: "Publications", iconTitle: "Publish"),
-    TabBarViewData(name: .Settings, title: "Settings", iconTitle: "Settings"),
-]
+    TabBarViewData(name: .Map, title: "Settings", iconTitle: "Settings")]
 
 public let googleMapsAPIKey = "AIzaSyC-zJ051bJkPMRs7YYIS5-CTf63PESAoqE"

@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E03078D1CE33E21003CCA3F /* SensorsDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03078C1CE33E21003CCA3F /* SensorsDetector.swift */; };
+		3E318DC71CE1F40D006F99B6 /* AudioLevelRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E318DC61CE1F40D006F99B6 /* AudioLevelRecording.swift */; };
+		3E318DCC1CE20211006F99B6 /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E318DCB1CE20211006F99B6 /* PublishViewController.swift */; };
+		3E318DD21CE20EB0006F99B6 /* AudioRecorderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E318DD01CE20EB0006F99B6 /* AudioRecorderPresenter.swift */; };
+		3E318DD31CE20EB0006F99B6 /* AudioRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E318DD11CE20EB0006F99B6 /* AudioRecorderViewController.swift */; };
 		3E68D59F1CCE384C002C8D63 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D59E1CCE384C002C8D63 /* LocationManager.swift */; };
-		3E68D5A11CCE40A7002C8D63 /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D5A01CCE40A7002C8D63 /* PublishViewController.swift */; };
 		3E68D5A31CCE40B8002C8D63 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D5A21CCE40B8002C8D63 /* SettingsViewController.swift */; };
 		3E68D5B81CCE45F8002C8D63 /* GenericCellImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D5A61CCE45F8002C8D63 /* GenericCellImplementation.swift */; };
 		3E68D5B91CCE45F8002C8D63 /* OneLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D5A81CCE45F8002C8D63 /* OneLabelTableViewCell.swift */; };
@@ -62,8 +66,12 @@
 
 /* Begin PBXFileReference section */
 		169E0AD8C714FF848AFF26AF /* Pods_CUPUS_Mobile_broker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CUPUS_Mobile_broker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E03078C1CE33E21003CCA3F /* SensorsDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SensorsDetector.swift; path = Publications/SensorsDetector.swift; sourceTree = "<group>"; };
+		3E318DC61CE1F40D006F99B6 /* AudioLevelRecording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLevelRecording.swift; sourceTree = "<group>"; };
+		3E318DCB1CE20211006F99B6 /* PublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublishViewController.swift; path = Publications/PublishViewController.swift; sourceTree = "<group>"; };
+		3E318DD01CE20EB0006F99B6 /* AudioRecorderPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioRecorderPresenter.swift; path = Publications/Sensors/Audio/AudioRecorderPresenter.swift; sourceTree = "<group>"; };
+		3E318DD11CE20EB0006F99B6 /* AudioRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioRecorderViewController.swift; path = Publications/Sensors/Audio/AudioRecorderViewController.swift; sourceTree = "<group>"; };
 		3E68D59E1CCE384C002C8D63 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		3E68D5A01CCE40A7002C8D63 /* PublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishViewController.swift; sourceTree = "<group>"; };
 		3E68D5A21CCE40B8002C8D63 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3E68D5A61CCE45F8002C8D63 /* GenericCellImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCellImplementation.swift; sourceTree = "<group>"; };
 		3E68D5A81CCE45F8002C8D63 /* OneLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneLabelTableViewCell.swift; sourceTree = "<group>"; };
@@ -146,6 +154,33 @@
 				169E0AD8C714FF848AFF26AF /* Pods_CUPUS_Mobile_broker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E318DC51CE1F131006F99B6 /* Publications */ = {
+			isa = PBXGroup;
+			children = (
+				3E318DC81CE201DB006F99B6 /* Sensors */,
+				3E03078C1CE33E21003CCA3F /* SensorsDetector.swift */,
+				3E318DCB1CE20211006F99B6 /* PublishViewController.swift */,
+			);
+			name = Publications;
+			sourceTree = "<group>";
+		};
+		3E318DC81CE201DB006F99B6 /* Sensors */ = {
+			isa = PBXGroup;
+			children = (
+				3E318DCD1CE20E6E006F99B6 /* Audio */,
+			);
+			name = Sensors;
+			sourceTree = "<group>";
+		};
+		3E318DCD1CE20E6E006F99B6 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				3E318DD01CE20EB0006F99B6 /* AudioRecorderPresenter.swift */,
+				3E318DD11CE20EB0006F99B6 /* AudioRecorderViewController.swift */,
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 		3E68D5A41CCE45F8002C8D63 /* Table */ = {
@@ -278,19 +313,20 @@
 		3EBD20D31CCE205100905452 /* CUPUS Mobile broker */ = {
 			isa = PBXGroup;
 			children = (
+				3E318DC51CE1F131006F99B6 /* Publications */,
 				3E68D5D31CCE4D8C002C8D63 /* Alerts.swift */,
 				3E68D5CE1CCE474C002C8D63 /* Subscription */,
 				3EBD21071CCE21BA00905452 /* Wireframe */,
 				3E68D5A41CCE45F8002C8D63 /* Table */,
 				3E68D5C41CCE4621002C8D63 /* ViewController */,
 				3EBD20D41CCE205100905452 /* AppDelegate.swift */,
-				3E68D59E1CCE384C002C8D63 /* LocationManager.swift */,
 				3EBD20D81CCE205100905452 /* Main.storyboard */,
 				3EBD20DB1CCE205100905452 /* Assets.xcassets */,
 				3EBD20DD1CCE205100905452 /* LaunchScreen.storyboard */,
 				3EBD20E01CCE205100905452 /* Info.plist */,
-				3E68D5A01CCE40A7002C8D63 /* PublishViewController.swift */,
 				3E68D5A21CCE40B8002C8D63 /* SettingsViewController.swift */,
+				3E318DC61CE1F40D006F99B6 /* AudioLevelRecording.swift */,
+				3E68D59E1CCE384C002C8D63 /* LocationManager.swift */,
 			);
 			path = "CUPUS Mobile broker";
 			sourceTree = "<group>";
@@ -532,14 +568,18 @@
 				3E68D5B91CCE45F8002C8D63 /* OneLabelTableViewCell.swift in Sources */,
 				3E68D5BB1CCE45F8002C8D63 /* SingleLabelWithImageCell.swift in Sources */,
 				3E68D5C21CCE45F8002C8D63 /* IRSectionViewModel.swift in Sources */,
+				3E318DD31CE20EB0006F99B6 /* AudioRecorderViewController.swift in Sources */,
 				3EBD20D51CCE205100905452 /* AppDelegate.swift in Sources */,
 				3E68D5C31CCE45F8002C8D63 /* IRTableView.swift in Sources */,
+				3E318DCC1CE20211006F99B6 /* PublishViewController.swift in Sources */,
 				3E68D5C11CCE45F8002C8D63 /* IRCellViewModel.swift in Sources */,
-				3E68D5A11CCE40A7002C8D63 /* PublishViewController.swift in Sources */,
 				3E68D5C01CCE45F8002C8D63 /* TwoLabelOneImageTableViewCell.swift in Sources */,
+				3E318DC71CE1F40D006F99B6 /* AudioLevelRecording.swift in Sources */,
 				3EBD210F1CCE2C0F00905452 /* BaseNavigationViewController.swift in Sources */,
 				3E68D5D21CCE4A67002C8D63 /* Subscription.swift in Sources */,
 				3E68D5CC1CCE4621002C8D63 /* GenericTableViewController.swift in Sources */,
+				3E318DD21CE20EB0006F99B6 /* AudioRecorderPresenter.swift in Sources */,
+				3E03078D1CE33E21003CCA3F /* SensorsDetector.swift in Sources */,
 				3E68D5D41CCE4D8C002C8D63 /* Alerts.swift in Sources */,
 				3E68D5A31CCE40B8002C8D63 /* SettingsViewController.swift in Sources */,
 			);

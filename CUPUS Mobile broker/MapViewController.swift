@@ -25,11 +25,7 @@ class MapViewController: UIViewController {
         navigationItem.leftBarButtonItems = [
             UIBarButtonItem(image: UIImage(named: "List"), style: .Plain, target: self, action: #selector(MapViewController.listPressed))]
         
-        if let location = LocationManager.location{
-            centerLocation = location
-        }else{
-            centerLocation = CLLocation(latitude: 45.1, longitude: 19.2)
-        }
+        centerLocation = CLLocation(latitude: 45.1, longitude: 19.2)
         
         let camera = GMSCameraPosition(target: CLLocationCoordinate2D(latitude: centerLocation.coordinate.latitude, longitude: centerLocation.coordinate.longitude), zoom: 8, bearing: CLLocationDirection(), viewingAngle: 0)
         
@@ -37,8 +33,6 @@ class MapViewController: UIViewController {
         mapView.myLocationEnabled = true
         
         self.view = mapView
-        
-        LocationManager.addSubscription(updatePosition)
     }
     
     func updatePosition(location: CLLocation){
