@@ -102,47 +102,56 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxv-Yf-grG">
-                                <rect key="frame" x="16" y="103" width="288" height="18"/>
+                                <rect key="frame" x="16" y="106" width="288" height="18"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60U-6M-6mu">
-                                <rect key="frame" x="18" y="138" width="284" height="40"/>
-                                <color key="backgroundColor" red="0.15294117647058825" green="0.68235294117647061" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="9Ih-wB-xbQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startStopButtonPressed:" destination="qqa-Oj-ivs" eventType="touchUpInside" id="aLB-aU-GNI"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8f-CV-L5H">
+                                <rect key="frame" x="16" y="128" width="231" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Value: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbg-TI-qJf">
-                                <rect key="frame" x="16" y="217" width="288" height="21"/>
+                                <rect key="frame" x="16" y="248" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmI-hq-Ep8">
-                                <rect key="frame" x="16" y="241" width="288" height="21"/>
+                                <rect key="frame" x="16" y="272" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nnT-tU-t8a">
+                                <rect key="frame" x="255" y="123" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchChangedValue:" destination="qqa-Oj-ivs" eventType="valueChanged" id="ZRJ-Iw-F6a"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEf-ap-aXY">
+                                <rect key="frame" x="16" y="164" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="nnT-tU-t8a" firstAttribute="leading" secondItem="R8f-CV-L5H" secondAttribute="trailing" constant="8" id="4Ae-cQ-4Ek"/>
                             <constraint firstAttribute="trailing" secondItem="ESW-vQ-3q8" secondAttribute="trailing" constant="16" id="54C-L3-l1x"/>
-                            <constraint firstItem="60U-6M-6mu" firstAttribute="leading" secondItem="C3d-dc-lpa" secondAttribute="leading" constant="18" id="AOl-NL-ctI"/>
+                            <constraint firstItem="qEf-ap-aXY" firstAttribute="top" secondItem="nnT-tU-t8a" secondAttribute="bottom" constant="10" id="BJC-NJ-w18"/>
+                            <constraint firstItem="R8f-CV-L5H" firstAttribute="top" secondItem="xxv-Yf-grG" secondAttribute="bottom" constant="4" id="E9X-k3-fMJ"/>
                             <constraint firstItem="ESW-vQ-3q8" firstAttribute="leading" secondItem="C3d-dc-lpa" secondAttribute="leading" constant="16" id="I8w-kh-cl7"/>
-                            <constraint firstItem="60U-6M-6mu" firstAttribute="top" secondItem="xxv-Yf-grG" secondAttribute="bottom" constant="17" id="Jj0-X5-moG"/>
+                            <constraint firstAttribute="trailing" secondItem="nnT-tU-t8a" secondAttribute="trailing" constant="16" id="O7n-1y-3eH"/>
+                            <constraint firstItem="qEf-ap-aXY" firstAttribute="leading" secondItem="C3d-dc-lpa" secondAttribute="leading" constant="16" id="Pmf-1l-LVr"/>
+                            <constraint firstItem="nnT-tU-t8a" firstAttribute="top" secondItem="ESW-vQ-3q8" secondAttribute="bottom" constant="23" id="PrE-rS-8bX"/>
                             <constraint firstItem="ESW-vQ-3q8" firstAttribute="top" secondItem="C3d-dc-lpa" secondAttribute="topMargin" constant="76" id="YrF-U8-Znr"/>
-                            <constraint firstAttribute="trailing" secondItem="60U-6M-6mu" secondAttribute="trailing" constant="18" id="d41-CA-KHT"/>
-                            <constraint firstItem="xxv-Yf-grG" firstAttribute="top" secondItem="ESW-vQ-3q8" secondAttribute="bottom" constant="3" id="fNC-u4-v5Z"/>
+                            <constraint firstAttribute="trailing" secondItem="qEf-ap-aXY" secondAttribute="trailing" constant="16" id="ake-IH-16B"/>
+                            <constraint firstItem="xxv-Yf-grG" firstAttribute="top" secondItem="ESW-vQ-3q8" secondAttribute="bottom" constant="6" id="fNC-u4-v5Z"/>
+                            <constraint firstItem="R8f-CV-L5H" firstAttribute="leading" secondItem="C3d-dc-lpa" secondAttribute="leading" constant="16" id="hxC-VW-skT"/>
                             <constraint firstItem="xxv-Yf-grG" firstAttribute="leading" secondItem="C3d-dc-lpa" secondAttribute="leading" constant="16" id="vxl-Qo-Qc0"/>
                             <constraint firstAttribute="trailing" secondItem="xxv-Yf-grG" secondAttribute="trailing" constant="16" id="zn6-QU-tou"/>
                         </constraints>
@@ -151,8 +160,9 @@
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="isAvailableLabel" destination="xxv-Yf-grG" id="w2l-qw-QvW"/>
-                        <outlet property="startstopButton" destination="60U-6M-6mu" id="vVj-tE-y08"/>
+                        <outlet property="isRecordingSwitch" destination="nnT-tU-t8a" id="jxN-ll-xFj"/>
                         <outlet property="timeLabel" destination="XmI-hq-Ep8" id="HEK-nA-kIy"/>
+                        <outlet property="timeRecording" destination="qEf-ap-aXY" id="Rc2-9n-k2Q"/>
                         <outlet property="valueLabel" destination="wbg-TI-qJf" id="q2l-8u-aG4"/>
                     </connections>
                 </viewController>

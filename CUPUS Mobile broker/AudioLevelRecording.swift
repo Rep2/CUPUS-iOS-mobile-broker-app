@@ -9,53 +9,66 @@
 import Foundation
 import AVFoundation
 
+protocol AudioRecorderSubscriber{
+    var id:String? {get set}
+    
+    func reciveAudioRecording(value: Float)
+}
+
+extension AudioRecorderSubscriber{
+    
+    func subscribe() -> String?{
+        return AudioLevelRecording.instance.subscribe(self)
+    }
+    
+    func unsubscribe(id: String){
+        AudioLevelRecording.instance.unsubscribe(id)
+    }
+    
+}
+
 class AudioLevelRecording: NSObject, AVAudioRecorderDelegate{
     
     /// AudioRecorder
     static let instance = AudioLevelRecording(readPeriod: 1)
     
-    /// AudioRecording is available
-    var isAvailable:Bool? = nil
+    /// Is audio recorder available
+    var isAvailable = false
     
+    /// Is audio recorder recording
     var isRecording = false
     
     
-    private var recordingSession: AVAudioSession!
-    private var recorder:AVAudioRecorder!
-    
     private var readPeriod: Double
-    private var observers:[String:((Float) -> Void)]!
-    
-    private var keepRecording = true
-    
-    private var timer:NSTimer!
     
     /// Initializes recorder and checks availability
     init(readPeriod: Double){
         self.readPeriod = readPeriod
-        observers = [:]
         
         super.init()
         
-        checkIfAvailable()
+        checkIfAudioRecordingAvailable()
     }
     
-    /// Detects if audio recording is available
-    /// Notifies observer and stores the value in isAvailable
-    func checkIfAvailable(observer: ((Bool) -> Void)? = nil){
-        recordingSession = AVAudioSession.sharedInstance()
-        
+    /**
+     Checks if audio recording is available
+     - parameter observer:((Bool) -> Void)? callback function returing if audio recording is available
+     */
+    func checkIfAudioRecordingAvailable(observer: ((Bool) -> Void)? = nil){
         do {
-            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            try recordingSession.setActive(true)
-            recordingSession.requestRecordPermission() {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryRecord)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            AVAudioSession.sharedInstance().requestRecordPermission() {
                 (allowed: Bool) -> Void in
+                
                 dispatch_async(dispatch_get_main_queue()) {
                     if let observer = observer{
                         observer(allowed)
                         self.isAvailable = allowed
                     }
                 }
+                
             }
         } catch {
             if let observer = observer{
@@ -65,25 +78,18 @@ class AudioLevelRecording: NSObject, AVAudioRecorderDelegate{
         }
     }
     
-    func addObserver(title:String, observer:(Float) -> Void){
-        observers[title] = observer
-    }
     
-    func removeObserver(title:String){
-        observers[title] = nil
-    }
-    
+    // Values used to convert read value to SPL
     private let referenceLevel:Float = 5
     private let range:Float = 180
     private let offset:Float = 20
+
+    private var recorder:AVAudioRecorder!
     
-    func startRecording(){
-        if !isRecording{
-            pStartRecording()
-        }
-    }
-    
-    private func pStartRecording(){
+    /**
+     Starts audio recording and dispatches each recorded value to subscribers
+     */
+    private func startRecording(){
         
         let audioFilename = NSTemporaryDirectory() + "tmp.caf"
         
@@ -104,41 +110,86 @@ class AudioLevelRecording: NSObject, AVAudioRecorderDelegate{
             recorder = try AVAudioRecorder(URL: audioURL, settings: settings)
             recorder.delegate = self
             
-            
             recorder.prepareToRecord()
             recorder.meteringEnabled = true
             recorder.record()
             
-            keepRecording = true
+            isRecording = true
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
                 
                 usleep(UInt32(100000))
                 
-                while self.keepRecording{
+                while self.isRecording{
                     self.recorder.updateMeters()
                     
                     let value = self.recorder.averagePowerForChannel(0)
                     
                     let SPL = 20 * log10(self.referenceLevel * powf(10, (value/20)) * self.range) + self.offset;
                     
-                    for (_, observer) in self.observers{
-                        observer(SPL)
-                    }
+                    self.sendRecordingToSubscribers(SPL)
                     
                     usleep(UInt32(self.readPeriod * 1000000.0))
                 }
             })
         }catch{
-            isRecording = false
             print("Failed to start audio recorder")
+            stopRecording()
         }
-        
     }
     
+    /**
+     Stops recording
+     */
     func stopRecording(){
-        keepRecording = false
         isRecording = false
+    }
+    
+    // Registered observers to which recorded value is sent
+    private var observers = Dictionary<String, protocol<AudioRecorderSubscriber>>()
+    
+    /**
+     Adds observer to recorder
+     - parameter observer:protocol<AudioRecorderSubscriber>
+     - return:String unique value with which to unsubscribe
+    */
+    func subscribe(observer: protocol<AudioRecorderSubscriber>) -> String?{
+        if !isAvailable{
+            return nil
+        }
+        
+        let id = NSUUID().UUIDString
+        observers[id] = observer
+        
+        if !isRecording{
+            startRecording()
+        }
+        
+        return id
+    }
+    
+    /**
+     Adds observer to recorder
+     - parameter id:String unique value recieved from subscribe method
+     */
+    func unsubscribe(id: String){
+        observers[id] = nil
+        
+        if observers.count == 0 && isRecording{
+            stopRecording()
+        }
+    }
+    
+    
+    
+    /**
+     Sends read recording to all observers
+     - parameter value:Float recorded audio value
+     */
+    private func sendRecordingToSubscribers(value: Float){
+        for (_, observer) in observers{
+            observer.reciveAudioRecording(value)
+        }
     }
     
 }

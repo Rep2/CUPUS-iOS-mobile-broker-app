@@ -17,6 +17,7 @@ enum Sensors: String{
 class SensorsDetector{
     
     static var instance:SensorsDetector!
+
     
     var sensors = [Sensors:Bool?]()
     
@@ -48,8 +49,8 @@ class SensorsDetector{
     }
     
     func detectSensors(){
-        if(AudioLevelRecording.instance.isAvailable == nil || AudioLevelRecording.instance.isAvailable == false){
-            AudioLevelRecording.instance.checkIfAvailable({ (available) in
+        if(true){ //AudioLevelRecording.instance.isAvailable == nil || AudioLevelRecording.instance.isAvailable == false){
+            AudioLevelRecording.instance.checkIfAudioRecordingAvailable({ (available) in
                 self.sensors[.AudioRecorder] = available
                 
                 self.checkSensorsInitialized()
@@ -69,8 +70,6 @@ class SensorsDetector{
             }
         }
         
-        if location != nil{
-            controller.setTable()
-        }
+        controller.setTable()
     }
 }
