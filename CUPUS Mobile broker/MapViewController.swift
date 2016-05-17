@@ -9,12 +9,14 @@
 import UIKit
 import GoogleMaps
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecognizerDelegate{
     
     var mapView: GMSMapView!
     var centerLocation:CLLocation!
     
     var updateCount = 0;
+    
+    var gesture:UILongPressGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +33,61 @@ class MapViewController: UIViewController {
         
         mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
         mapView.myLocationEnabled = true
+        mapView.delegate = self
+        
+        mapView.settings.consumesGesturesInView = false
         
         self.view = mapView
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
+        gesture = UILongPressGestureRecognizer(target: self, action: #selector(MapViewController.longPressChanged))
+        gesture.delegate = self
+        gesture.delaysTouchesBegan = true
+        view.addGestureRecognizer(gesture)
     }
+    
+    
+    var longTouchInAction = false
+    
+    func longPressChanged(gestureRecognizer: UILongPressGestureRecognizer){
+        if gestureRecognizer.state == UIGestureRecognizerState.Began{
+            longTouchInAction = true
+            
+            let point = gestureRecognizer.locationInView(self.view)
+            let coordinate = mapView.projection.coordinateForPoint(point)
+            startDrawingCircle(coordinate)
+        }else if gestureRecognizer.state == UIGestureRecognizerState.Ended{
+            longTouchInAction = false
+        }else{
+        }
+    }
+    
+    
+    var circle:GMSCircle!
+    
+    func startDrawingCircle(coordinate: CLLocationCoordinate2D){
+      
+        circle = GMSCircle(position: coordinate, radius: CLLocationDistance(floatLiteral: 1000))
+        circle.fillColor =  UIColor(colorLiteralRed: 1, green: 1, blue: 1, alpha: 0.6)
+        circle.strokeWidth = 3;
+        circle.strokeColor = UIColor.blueColor()
+        circle.map = mapView
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+            
+            while(self.longTouchInAction){
+                usleep(1000)
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.circle.radius = self.circle.radius + 100
+                })
+            }
+            
+        })
+      
+    }
+
     
     func updatePosition(location: CLLocation){
         updateCount += 1
@@ -47,16 +101,20 @@ class MapViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    var newSubsctiption:Subscription?
 
     func plusPressed(){
         
-        presentAlertWithTwoButtons("Chose type of subscription", firstButtonTitle: "Follow", secondButtonTitle: "Pick", controller: self) { (firstButton) in
+        presentAlertWithTwoButtons("Chose type of subscription", firstButtonTitle: "Follow", secondButtonTitle: "Pick", hasCancleButton: true, controller: self) { (firstButton) in
             
             if firstButton{
                 let controller = GenericsWireframe.instance.getTableViewController()
                 controller.title = "Select subscription values"
                 
-                let subscription = Subscription()
+                controller.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "CheckmarkWhite"), style: .Plain, target: self, action: #selector(MapViewController.subscriptionValuesSelected))
+            
+                self.newSubsctiption = Subscription()
                 
                 var cells = [IRCellViewModel]()
                 
@@ -69,9 +127,10 @@ class MapViewController: UIViewController {
                     
                 }
                 
-                for cell in cells{
+                for (index, cell) in cells.enumerate(){
                     cell.didSelectCellFunc = {
                         cell.setDataAndUpdateCell([IRCellElementIdentifiers.FirstImage: true])
+                        self.newSubsctiption!.optionPressed(SubscriptionOptions.sourceOptions[index])
                     }
                 }
                 
@@ -83,7 +142,17 @@ class MapViewController: UIViewController {
             }
             
         }
+    }
+    
+    func subscriptionValuesSelected(){
         
+        if(newSubsctiption?.subscriptionTypes.count == 0){
+            presentAlert("Select at least one subscription value", controller: self)
+        }else{
+            Wireframe.instance.popViewController(0, animated: true)
+            
+            SubscriptionManger.instance.addSubscriptions(newSubsctiption!)
+        }
     }
     
     func listPressed(){
@@ -92,14 +161,16 @@ class MapViewController: UIViewController {
         
         var cells = [IRCellViewModel]()
         
-        for title in SubscriptionManger.instance.subscriptions{
+        for subscription in SubscriptionManger.instance.subscriptions{
+            
             cells.append(
                 IRCellViewModel(
                     implementationIdentifier: IRCellIdentifier.OneLabelRightImage,
-                    data: [IRCellElementIdentifiers.FirstLabel:title],
+                    data: [IRCellElementIdentifiers.FirstLabel: subscription.subscriptionTypes.joinWithSeparator(", ")],
                     didSelectCellFunc: {
                         
                 }))
+            
         }
         
         controller.setSections([

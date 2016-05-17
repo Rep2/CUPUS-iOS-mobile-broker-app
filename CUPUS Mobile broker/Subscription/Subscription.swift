@@ -12,10 +12,10 @@ class SubscriptionManger{
     
     static let instance = SubscriptionManger()
     
-    var subscriptions = [String]()
+    var subscriptions = [Subscription]()
     
-    func addSubscriptions(title: String){
-        subscriptions.append(title)
+    func addSubscriptions(subscription: Subscription){
+        subscriptions.append(subscription)
     }
     
 }
@@ -34,8 +34,6 @@ class Subscription{
         }else{
             subscriptionTypes.append(type)
         }
-        
-        print(subscriptionTypes)
     }
     
 }

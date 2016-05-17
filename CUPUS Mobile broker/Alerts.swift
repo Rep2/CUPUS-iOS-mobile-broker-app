@@ -10,12 +10,15 @@ import UIKit
 
 private var undisplayedAlert:UIAlertController?
 
-func presentAlert(title:String, message:String? = nil, controller: UIViewController?) -> Bool{
+func presentAlert(title:String, message:String? = nil, buttonTitle:String? = nil, controller: UIViewController?) -> Bool{
     let alertController: UIAlertController
     
     alertController = UIAlertController(title:title,
                                         message: message,
                                         preferredStyle: UIAlertControllerStyle.ActionSheet)
+    
+    alertController.addAction(UIAlertAction(title: buttonTitle ?? "OK", style: UIAlertActionStyle.Cancel, handler: {action -> Void in
+    }))
     
     if controller != nil{
         controller!.presentViewController(alertController, animated:true, completion: nil)
@@ -25,7 +28,7 @@ func presentAlert(title:String, message:String? = nil, controller: UIViewControl
     }
 }
 
-func presentAlertWithTwoButtons(title:String, message:String? = nil, firstButtonTitle:String? = nil, secondButtonTitle:String? = nil, controller: UIViewController?, retAction: Bool -> Void){
+func presentAlertWithTwoButtons(title:String, message:String? = nil, firstButtonTitle:String? = nil, secondButtonTitle:String? = nil, hasCancleButton:Bool = false, controller: UIViewController?, retAction: Bool -> Void){
     
     let alertController: UIAlertController
     
@@ -39,6 +42,10 @@ func presentAlertWithTwoButtons(title:String, message:String? = nil, firstButton
     alertController.addAction(UIAlertAction(title: secondButtonTitle ?? "Ne", style: .Default, handler: {action -> Void in
         retAction(false)
     }))
+    
+    if hasCancleButton{
+        alertController.addAction(UIAlertAction(title: "Cancle", style: .Cancel , handler: nil))
+    }
     
     if let controller = controller{
         controller.presentViewController(alertController, animated:true, completion: nil)
