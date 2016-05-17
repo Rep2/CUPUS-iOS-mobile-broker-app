@@ -68,10 +68,18 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
     
     func startDrawingCircle(coordinate: CLLocationCoordinate2D){
       
-        circle = GMSCircle(position: coordinate, radius: CLLocationDistance(floatLiteral: 1000))
-        circle.fillColor =  UIColor(colorLiteralRed: 1, green: 1, blue: 1, alpha: 0.6)
+        let width = pow(2, Double(self.mapView.camera.zoom))
+        
+        if circle == nil{
+           circle = GMSCircle(position: coordinate, radius: CLLocationDistance(floatLiteral: 1500000/width))
+        }else{
+            circle.position = coordinate
+            circle.radius = CLLocationDistance(floatLiteral: 1500000/width)
+        }
+        
+        circle.fillColor =  UIColor(red: 73/255.0, green: 131/255.0, blue: 230/255.0, alpha: 0.3)
         circle.strokeWidth = 3;
-        circle.strokeColor = UIColor.blueColor()
+        circle.strokeColor = UIColor(red: 73/255.0, green: 131/255.0, blue: 230/255.0, alpha: 0.8)
         circle.map = mapView
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
@@ -80,7 +88,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
                 usleep(1000)
                 
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.circle.radius = self.circle.radius + 100
+                    self.circle.radius = self.circle.radius + (100000/width)
                 })
             }
             
