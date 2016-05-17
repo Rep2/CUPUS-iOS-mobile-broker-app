@@ -55,8 +55,8 @@ class PublishViewController: UIViewController{
         switch sensor {
         case .AudioRecorder:
             Wireframe.instance.pushViewControllerToTab(.AudioRecorder, tab: 1)
-        default:
-            break
+        case .DetectDevices:
+            Wireframe.instance.pushViewControllerToTab(.DetectBluetooth, tab: 1)
         }
     }
 }

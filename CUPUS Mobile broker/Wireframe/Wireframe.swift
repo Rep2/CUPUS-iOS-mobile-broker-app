@@ -13,7 +13,9 @@ enum RegisteredViewControllers: String{
     case Map = "Map"
     
     case Publications = "Publications"
+    
     case AudioRecorder = "AudioRecorderView"
+    case DetectBluetooth = "DetectBluetooth"
     
     case Settings = "Settings"
 
@@ -29,8 +31,6 @@ class Wireframe{
     var tabBarNavigationControllers: [UINavigationController]!
     
     var locationManager: LocationManager!
-    
-    var topController:[UIViewController] = []
     
     init(){
         Wireframe.instance = self
@@ -48,18 +48,15 @@ class Wireframe{
     
     func pushViewControllerToTab(controller: UIViewController, tab: Int, animated: Bool = true){
         tabBarNavigationControllers[tab].pushViewController(controller, animated: animated)
-        topController.append(controller)
     }
     
     func pushViewControllerToTab(name: RegisteredViewControllers, tab: Int, animated: Bool = true){
         let controller = getViewController(name)
         tabBarNavigationControllers[tab].pushViewController(controller, animated: animated)
-        topController.append(controller)
     }
     
     func popViewController(tab: Int, animated: Bool = true){
         tabBarNavigationControllers[tab].popViewControllerAnimated(animated)
-        topController.removeLast()
     }
     
 }

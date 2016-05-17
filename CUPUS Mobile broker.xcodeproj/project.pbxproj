@@ -11,6 +11,8 @@
 		3E318DC71CE1F40D006F99B6 /* AudioLevelRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E318DC61CE1F40D006F99B6 /* AudioLevelRecording.swift */; };
 		3E318DCC1CE20211006F99B6 /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E318DCB1CE20211006F99B6 /* PublishViewController.swift */; };
 		3E318DD31CE20EB0006F99B6 /* AudioRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E318DD11CE20EB0006F99B6 /* AudioRecorderViewController.swift */; };
+		3E49F54A1CEB3206005EE3BF /* DetectBluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E49F5491CEB3206005EE3BF /* DetectBluetoothViewController.swift */; };
+		3E49F54C1CEB3F87005EE3BF /* AudioRecordingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E49F54B1CEB3F87005EE3BF /* AudioRecordingPresenter.swift */; };
 		3E68D59F1CCE384C002C8D63 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D59E1CCE384C002C8D63 /* LocationManager.swift */; };
 		3E68D5A31CCE40B8002C8D63 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D5A21CCE40B8002C8D63 /* SettingsViewController.swift */; };
 		3E68D5B81CCE45F8002C8D63 /* GenericCellImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D5A61CCE45F8002C8D63 /* GenericCellImplementation.swift */; };
@@ -69,6 +71,8 @@
 		3E318DC61CE1F40D006F99B6 /* AudioLevelRecording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLevelRecording.swift; sourceTree = "<group>"; };
 		3E318DCB1CE20211006F99B6 /* PublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublishViewController.swift; path = Publications/PublishViewController.swift; sourceTree = "<group>"; };
 		3E318DD11CE20EB0006F99B6 /* AudioRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioRecorderViewController.swift; path = Publications/Sensors/Audio/AudioRecorderViewController.swift; sourceTree = "<group>"; };
+		3E49F5491CEB3206005EE3BF /* DetectBluetoothViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectBluetoothViewController.swift; sourceTree = "<group>"; };
+		3E49F54B1CEB3F87005EE3BF /* AudioRecordingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioRecordingPresenter.swift; path = Publications/Sensors/Audio/AudioRecordingPresenter.swift; sourceTree = "<group>"; };
 		3E68D59E1CCE384C002C8D63 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3E68D5A21CCE40B8002C8D63 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3E68D5A61CCE45F8002C8D63 /* GenericCellImplementation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCellImplementation.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 		3E318DC81CE201DB006F99B6 /* Sensors */ = {
 			isa = PBXGroup;
 			children = (
+				3E49F5481CEB315F005EE3BF /* DetectBluetooth */,
 				3E318DCD1CE20E6E006F99B6 /* Audio */,
 			);
 			name = Sensors;
@@ -176,8 +181,17 @@
 			isa = PBXGroup;
 			children = (
 				3E318DD11CE20EB0006F99B6 /* AudioRecorderViewController.swift */,
+				3E49F54B1CEB3F87005EE3BF /* AudioRecordingPresenter.swift */,
 			);
 			name = Audio;
+			sourceTree = "<group>";
+		};
+		3E49F5481CEB315F005EE3BF /* DetectBluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				3E49F5491CEB3206005EE3BF /* DetectBluetoothViewController.swift */,
+			);
+			name = DetectBluetooth;
 			sourceTree = "<group>";
 		};
 		3E68D5A41CCE45F8002C8D63 /* Table */ = {
@@ -559,8 +573,10 @@
 				3E68D5BD1CCE45F8002C8D63 /* TwoLabelLeftInfoCell.swift in Sources */,
 				3E68D5B81CCE45F8002C8D63 /* GenericCellImplementation.swift in Sources */,
 				3E68D5CA1CCE4621002C8D63 /* GenericViewControllerDecorator.swift in Sources */,
+				3E49F54A1CEB3206005EE3BF /* DetectBluetoothViewController.swift in Sources */,
 				3E68D59F1CCE384C002C8D63 /* LocationManager.swift in Sources */,
 				3E68D5CD1CCE4621002C8D63 /* ViewControllerWithDecorator.swift in Sources */,
+				3E49F54C1CEB3F87005EE3BF /* AudioRecordingPresenter.swift in Sources */,
 				3EBD21101CCE2C0F00905452 /* TabbarControllerCreator.swift in Sources */,
 				3E68D5B91CCE45F8002C8D63 /* OneLabelTableViewCell.swift in Sources */,
 				3E68D5BB1CCE45F8002C8D63 /* SingleLabelWithImageCell.swift in Sources */,

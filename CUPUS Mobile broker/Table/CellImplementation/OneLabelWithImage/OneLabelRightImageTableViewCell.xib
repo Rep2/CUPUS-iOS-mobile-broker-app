@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="OneLabelRightImageTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="OneLabelRightImageTableViewCell" id="Grz-Ds-FVt" customClass="SingleLabelWithImageCell" customModule="CUPUS_Mobile_broker" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="OneLabelRightImageTableViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="OneLabelRightImageTableViewCell" id="Grz-Ds-FVt" customClass="SingleLabelWithImageCell" customModule="CUPUS_Mobile_broker" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Grz-Ds-FVt" id="8cd-Yv-vfl">
@@ -21,11 +20,11 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="25C-6T-Ews">
-                        <rect key="frame" x="278" y="5" width="34" height="34"/>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="25C-6T-Ews">
+                        <rect key="frame" x="270" y="5" width="34" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="34" id="NNk-R9-Hz2"/>
-                            <constraint firstAttribute="width" constant="34" id="UDf-m4-3YI"/>
+                            <constraint firstAttribute="height" constant="34" id="Fdc-In-QXb"/>
+                            <constraint firstAttribute="width" constant="34" id="IUr-hm-seG"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -36,11 +35,11 @@
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="25C-6T-Ews" secondAttribute="trailing" constant="16" id="3Hj-9D-kyH"/>
                     <constraint firstItem="kh0-tv-WPT" firstAttribute="centerY" secondItem="8cd-Yv-vfl" secondAttribute="centerY" id="JH9-bT-TBs"/>
-                    <constraint firstItem="25C-6T-Ews" firstAttribute="trailing" secondItem="8cd-Yv-vfl" secondAttribute="trailingMargin" id="JOE-g1-D4d"/>
-                    <constraint firstItem="25C-6T-Ews" firstAttribute="centerY" secondItem="8cd-Yv-vfl" secondAttribute="centerY" id="JrJ-a1-Cgc"/>
                     <constraint firstItem="kh0-tv-WPT" firstAttribute="leading" secondItem="8cd-Yv-vfl" secondAttribute="leading" constant="16" id="VEM-r4-J5N"/>
-                    <constraint firstItem="25C-6T-Ews" firstAttribute="leading" secondItem="kh0-tv-WPT" secondAttribute="trailing" constant="8" id="mud-yN-xIX"/>
+                    <constraint firstItem="25C-6T-Ews" firstAttribute="leading" secondItem="kh0-tv-WPT" secondAttribute="trailing" id="jQ9-JR-81Z"/>
+                    <constraint firstItem="25C-6T-Ews" firstAttribute="top" secondItem="8cd-Yv-vfl" secondAttribute="top" constant="5" id="th5-5t-G0v"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -50,4 +49,7 @@
             <point key="canvasLocation" x="565" y="347"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Checkmark" width="32" height="32"/>
+    </resources>
 </document>

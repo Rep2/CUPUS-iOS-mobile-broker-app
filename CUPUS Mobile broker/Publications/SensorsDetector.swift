@@ -11,7 +11,7 @@ import CoreLocation
 
 enum Sensors: String{
     case AudioRecorder = "Audio recorder"
-    case ExternalDevices = "External bluetooth devices"
+    case DetectDevices = "Detect bluetooth devices"
 }
 
 class SensorsDetector{
@@ -27,7 +27,7 @@ class SensorsDetector{
     
     init(controller: PublishViewController){
         sensors[.AudioRecorder] = nil
-        sensors[.ExternalDevices] = true
+        sensors[.DetectDevices] = true
         
         self.controller = controller
         
@@ -64,7 +64,7 @@ class SensorsDetector{
     
     // Checks if sensors are initializes and if so, notifies the view controller
     func checkSensorsInitialized(){
-        for sensor in [Sensors.AudioRecorder, Sensors.ExternalDevices]{
+        for sensor in [Sensors.AudioRecorder, Sensors.DetectDevices]{
             if sensors[sensor] == nil{
                 return
             }

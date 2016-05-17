@@ -20,6 +20,8 @@ class GenericTableViewController: ViewControllerWithDecorator{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
         table.setData(cellViewModelSections)
     }
     
@@ -41,5 +43,9 @@ class GenericTableViewController: ViewControllerWithDecorator{
         super.viewDidDisappear(animated)
         
         table.superviewDidDisappear()
+    }
+    
+    deinit{
+        print("Generic table deinitialized")
     }
 }

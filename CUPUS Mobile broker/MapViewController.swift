@@ -54,7 +54,7 @@ class MapViewController: UIViewController {
             
             if firstButton{
                 let controller = GenericsWireframe.instance.getTableViewController()
-                controller.title = "New subscriptions"
+                controller.title = "Select subscription values"
                 
                 let subscription = Subscription()
                 
@@ -65,13 +65,12 @@ class MapViewController: UIViewController {
                         IRCellViewModel(
                             implementationIdentifier: IRCellIdentifier.OneLabelRightImage,
                             data: [IRCellElementIdentifiers.FirstLabel:title,
-                                IRCellElementIdentifiers.FirstImage:"Plus"]))
+                                IRCellElementIdentifiers.FirstImage:"Checkmark"]))
                     
                 }
                 
                 for cell in cells{
                     cell.didSelectCellFunc = {
-                       // subscription.optionPressed(title)
                         cell.setDataAndUpdateCell([IRCellElementIdentifiers.FirstImage: true])
                     }
                 }
@@ -96,7 +95,7 @@ class MapViewController: UIViewController {
         for title in SubscriptionManger.instance.subscriptions{
             cells.append(
                 IRCellViewModel(
-                    implementationIdentifier: IRCellIdentifier.OneLabelBasic,
+                    implementationIdentifier: IRCellIdentifier.OneLabelRightImage,
                     data: [IRCellElementIdentifiers.FirstLabel:title],
                     didSelectCellFunc: {
                         
