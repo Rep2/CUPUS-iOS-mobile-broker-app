@@ -6,7 +6,7 @@
 //  Copyright © 2016 fer. All rights reserved.
 //
 
-import Foundation
+import CoreLocation
 
 class SubscriptionOptions{
     
@@ -16,5 +16,10 @@ class SubscriptionOptions{
         "Noise",
         "Temperature"
     ]
-    
+
+}
+
+struct CircleData{
+    let center: CLLocationCoordinate2D
+    let radius: Double
 }

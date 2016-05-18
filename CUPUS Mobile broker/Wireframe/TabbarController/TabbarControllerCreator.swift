@@ -29,8 +29,13 @@ func tabBarViewsToViewControllers(views: [TabBarViewData]) -> [UINavigationContr
 
 // Creates navigation controller, adds view created from item to it and costumizes view
 private func createNavigationControllerForBaseTabBarView(tabbarViewItem: TabBarViewData) -> UINavigationController{
+    var navigationController: UINavigationController!
     
-    let navigationController = UINavigationController(rootViewController: Wireframe.instance.getViewController(tabbarViewItem.name))
+    if tabbarViewItem.title == "Settings"{
+        navigationController = UINavigationController(rootViewController: Wireframe.instance.getSettings())
+    }else{
+        navigationController = UINavigationController(rootViewController: Wireframe.instance.getViewController(tabbarViewItem.name))
+    }
     
     navigationController.navigationBar.barTintColor = UIColor(red: 0, green: 122.0/255, blue: 1, alpha: 1)
     navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]

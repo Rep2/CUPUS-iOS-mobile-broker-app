@@ -18,14 +18,22 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
     
     var gesture:UILongPressGestureRecognizer!
     
+    
+    var plusButton:UIBarButtonItem!
+    var listButton:UIBarButtonItem!
+    
+    var cancleButton:UIBarButtonItem!
+    var approveButton:UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(named: "Plus"), style: .Plain, target: self, action: #selector(MapViewController.plusPressed))]
+        plusButton = UIBarButtonItem(image: UIImage(named: "Plus"), style: .Plain, target: self, action: #selector(MapViewController.plusPressed))
+        listButton = UIBarButtonItem(image: UIImage(named: "List"), style: .Plain, target: self, action: #selector(MapViewController.listPressed))
+        cancleButton = UIBarButtonItem(image: UIImage(named: "Cancle"), style: .Plain, target: self, action: #selector(MapViewController.cancleSelect))
+        approveButton = UIBarButtonItem(image: UIImage(named: "CheckmarkWhite"), style: .Plain, target: self, action: #selector(MapViewController.approveSelect))
         
-        navigationItem.leftBarButtonItems = [
-            UIBarButtonItem(image: UIImage(named: "List"), style: .Plain, target: self, action: #selector(MapViewController.listPressed))]
+        presentStandardButtons()
         
         centerLocation = CLLocation(latitude: 45.1, longitude: 19.2)
         
@@ -44,11 +52,53 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
         gesture = UILongPressGestureRecognizer(target: self, action: #selector(MapViewController.longPressChanged))
         gesture.delegate = self
         gesture.delaysTouchesBegan = true
+        gesture.enabled = false
         view.addGestureRecognizer(gesture)
+        
     }
     
+    func cancleSelect(){
+        if circle != nil{
+            circle.map = nil
+            circle = nil
+            
+            presentStandardButtons()
+            gesture.enabled = false
+        }
+    }
+    
+    var circleData:CircleData?
+    
+    func approveSelect(){
+        if circle != nil{
+            presentSubscritionValueTable(.Pick)
+            
+            circleData = CircleData(center: circle.position, radius: circle.radius)
+            
+            delay(0.2, closure: {
+                self.circle.map = nil
+                self.circle = nil
+                
+                self.presentStandardButtons()
+                self.gesture.enabled = false
+            })
+        }else{
+            presentAlert("Long press on the map to select the subscription area", controller: self)
+        }
+    }
+    
+    func presentStandardButtons(){
+        navigationItem.rightBarButtonItem = plusButton
+        navigationItem.leftBarButtonItem = listButton
+    }
+    
+    func presentApproveCancleButtons(){
+        navigationItem.leftBarButtonItem = cancleButton
+        navigationItem.rightBarButtonItem = approveButton
+    }
     
     var longTouchInAction = false
+    var circle:GMSCircle!
     
     func longPressChanged(gestureRecognizer: UILongPressGestureRecognizer){
         if gestureRecognizer.state == UIGestureRecognizerState.Began{
@@ -59,28 +109,23 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
             startDrawingCircle(coordinate)
         }else if gestureRecognizer.state == UIGestureRecognizerState.Ended{
             longTouchInAction = false
-        }else{
         }
     }
-    
-    
-    var circle:GMSCircle!
     
     func startDrawingCircle(coordinate: CLLocationCoordinate2D){
       
         let width = pow(2, Double(self.mapView.camera.zoom))
         
         if circle == nil{
-           circle = GMSCircle(position: coordinate, radius: CLLocationDistance(floatLiteral: 1500000/width))
+            circle = GMSCircle(position: coordinate, radius: CLLocationDistance(floatLiteral: 1500000/width))
+            circle.fillColor =  UIColor(red: 73/255.0, green: 131/255.0, blue: 230/255.0, alpha: 0.3)
+            circle.strokeWidth = 3;
+            circle.strokeColor = UIColor(red: 73/255.0, green: 131/255.0, blue: 230/255.0, alpha: 0.8)
+            circle.map = mapView
         }else{
             circle.position = coordinate
             circle.radius = CLLocationDistance(floatLiteral: 1500000/width)
         }
-        
-        circle.fillColor =  UIColor(red: 73/255.0, green: 131/255.0, blue: 230/255.0, alpha: 0.3)
-        circle.strokeWidth = 3;
-        circle.strokeColor = UIColor(red: 73/255.0, green: 131/255.0, blue: 230/255.0, alpha: 0.8)
-        circle.map = mapView
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
             
@@ -88,7 +133,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
                 usleep(1000)
                 
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.circle.radius = self.circle.radius + (100000/width)
+                    self.circle.radius = self.circle.radius + (70000/width)
                 })
             }
             
@@ -117,43 +162,50 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
         presentAlertWithTwoButtons("Chose type of subscription", firstButtonTitle: "Follow", secondButtonTitle: "Pick", hasCancleButton: true, controller: self) { (firstButton) in
             
             if firstButton{
-                let controller = GenericsWireframe.instance.getTableViewController()
-                controller.title = "Select subscription values"
+                self.presentSubscritionValueTable(.Follow)
+            }else{
+                self.gesture.enabled = true
                 
-                controller.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "CheckmarkWhite"), style: .Plain, target: self, action: #selector(MapViewController.subscriptionValuesSelected))
-            
-                self.newSubsctiption = Subscription()
-                
-                var cells = [IRCellViewModel]()
-                
-                for title in SubscriptionOptions.sourceOptions{
-                    cells.append(
-                        IRCellViewModel(
-                            implementationIdentifier: IRCellIdentifier.OneLabelRightImage,
-                            data: [IRCellElementIdentifiers.FirstLabel:title,
-                                IRCellElementIdentifiers.FirstImage:"Checkmark"]))
-                    
-                }
-                
-                for (index, cell) in cells.enumerate(){
-                    cell.didSelectCellFunc = {
-                        cell.setDataAndUpdateCell([IRCellElementIdentifiers.FirstImage: true])
-                        self.newSubsctiption!.optionPressed(SubscriptionOptions.sourceOptions[index])
-                    }
-                }
-                
-                controller.setSections([
-                    IRCellViewModelSection(sectionTitle: nil, cellViewModels: cells)
-                    ])
-                
-                Wireframe.instance.pushViewControllerToTab(controller, tab: 0)
+                self.presentApproveCancleButtons()
             }
             
         }
     }
     
-    func subscriptionValuesSelected(){
+    func presentSubscritionValueTable(type: SubscriptionType){
+        let controller = GenericsWireframe.instance.getTableViewController()
+        controller.title = "Select subscription values"
         
+        controller.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "CheckmarkWhite"), style: .Plain, target: self, action: #selector(MapViewController.subscriptionValuesSelected))
+        
+        self.newSubsctiption = Subscription(type: type)
+        
+        var cells = [IRCellViewModel]()
+        
+        for title in SubscriptionOptions.sourceOptions{
+            cells.append(
+                IRCellViewModel(
+                    implementationIdentifier: IRCellIdentifier.OneLabelRightImage,
+                    data: [IRCellElementIdentifiers.FirstLabel:title,
+                        IRCellElementIdentifiers.FirstImage:"Checkmark"]))
+            
+        }
+        
+        for (index, cell) in cells.enumerate(){
+            cell.didSelectCellFunc = {
+                cell.setDataAndUpdateCell([IRCellElementIdentifiers.FirstImage: true])
+                self.newSubsctiption!.optionPressed(SubscriptionOptions.sourceOptions[index])
+            }
+        }
+        
+        controller.setSections([
+            IRCellViewModelSection(sectionTitle: nil, cellViewModels: cells)
+            ])
+        
+        Wireframe.instance.pushViewControllerToTab(controller, tab: 0)
+    }
+    
+    func subscriptionValuesSelected(){
         if(newSubsctiption?.subscriptionTypes.count == 0){
             presentAlert("Select at least one subscription value", controller: self)
         }else{
@@ -174,7 +226,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
             cells.append(
                 IRCellViewModel(
                     implementationIdentifier: IRCellIdentifier.OneLabelRightImage,
-                    data: [IRCellElementIdentifiers.FirstLabel: subscription.subscriptionTypes.joinWithSeparator(", ")],
+                    data: [IRCellElementIdentifiers.FirstLabel: (subscription.type == .Pick ? "Pick - " : "Follow - ") + subscription.subscriptionTypes.joinWithSeparator(", ")],
                     didSelectCellFunc: {
                         
                 }))

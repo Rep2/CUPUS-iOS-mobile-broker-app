@@ -59,6 +59,28 @@ class Wireframe{
         tabBarNavigationControllers[tab].popViewControllerAnimated(animated)
     }
     
+    func getSettings() -> UIViewController{
+        let controller = GenericsWireframe.instance.getTableViewController()
+        controller.title = "Settings"
+        
+        let cells = [
+            IRCellViewModel(implementationIdentifier: IRCellIdentifier.TwoLabelRightDetail,
+                data: [IRCellElementIdentifiers.FirstLabel:"Server IP",
+                    IRCellElementIdentifiers.SecondLabel:"192.168.1.1"]),
+            IRCellViewModel(implementationIdentifier: IRCellIdentifier.TwoLabelRightDetail,
+                data: [IRCellElementIdentifiers.FirstLabel:"Server port",
+                IRCellElementIdentifiers.SecondLabel:"8080"]),
+            IRCellViewModel(implementationIdentifier: IRCellIdentifier.OneLabelBasic,
+                data: [IRCellElementIdentifiers.FirstLabel:"Notifications enabled"])
+        ]
+        
+        controller.setSections([
+            IRCellViewModelSection(sectionTitle: nil, cellViewModels: cells)
+            ])
+        
+        return controller
+    }
+    
 }
 
 private let tabBarViewData = [

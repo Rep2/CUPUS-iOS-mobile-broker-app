@@ -66,7 +66,7 @@
         <!--Settings-->
         <scene sceneID="noc-04-7J1">
             <objects>
-                <viewController storyboardIdentifier="Settings" title="Settings" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aLv-wC-mtj" customClass="MapViewController" customModule="CUPUS_Mobile_broker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" title="Settings" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aLv-wC-mtj" customClass="GenericTableViewController" customModule="CUPUS_Mobile_broker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jot-T9-Ogs"/>
                         <viewControllerLayoutGuide type="bottom" id="KmL-5K-HpF"/>

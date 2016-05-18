@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum SubscriptionType{
+    case Follow
+    case Pick
+}
+
 class SubscriptionManger{
     
     static let instance = SubscriptionManger()
@@ -22,10 +27,12 @@ class SubscriptionManger{
 
 class Subscription{
     
+    var type:SubscriptionType
     var subscriptionTypes: [String]
     
-    init(types: [String] = []){
+    init(type:SubscriptionType, types: [String] = []){
         subscriptionTypes = types
+        self.type = type
     }
     
     func optionPressed(type: String){

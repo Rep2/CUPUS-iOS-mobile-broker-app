@@ -45,6 +45,7 @@
 		3EBD210B1CCE21BA00905452 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD21091CCE21BA00905452 /* Wireframe.swift */; };
 		3EBD210F1CCE2C0F00905452 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD210D1CCE2C0F00905452 /* BaseNavigationViewController.swift */; };
 		3EBD21101CCE2C0F00905452 /* TabbarControllerCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD210E1CCE2C0F00905452 /* TabbarControllerCreator.swift */; };
+		3EE2F1171CEC9EBC008A2669 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2F1161CEC9EBC008A2669 /* Delay.swift */; };
 		F9A6BA56F96E7DEF417D4A94 /* Pods_CUPUS_Mobile_broker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169E0AD8C714FF848AFF26AF /* Pods_CUPUS_Mobile_broker.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		3EBD21091CCE21BA00905452 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		3EBD210D1CCE2C0F00905452 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		3EBD210E1CCE2C0F00905452 /* TabbarControllerCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarControllerCreator.swift; sourceTree = "<group>"; };
+		3EE2F1161CEC9EBC008A2669 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		D3EE208AF18C868F5673730F /* Pods-CUPUS Mobile broker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CUPUS Mobile broker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CUPUS Mobile broker/Pods-CUPUS Mobile broker.release.xcconfig"; sourceTree = "<group>"; };
 		DA1397C073B35C59973C0D33 /* Pods-CUPUS Mobile broker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CUPUS Mobile broker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CUPUS Mobile broker/Pods-CUPUS Mobile broker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -338,6 +340,7 @@
 				3E68D5A21CCE40B8002C8D63 /* SettingsViewController.swift */,
 				3E318DC61CE1F40D006F99B6 /* AudioLevelRecording.swift */,
 				3E68D59E1CCE384C002C8D63 /* LocationManager.swift */,
+				3EE2F1161CEC9EBC008A2669 /* Delay.swift */,
 			);
 			path = "CUPUS Mobile broker";
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				3E68D5D21CCE4A67002C8D63 /* Subscription.swift in Sources */,
 				3E68D5CC1CCE4621002C8D63 /* GenericTableViewController.swift in Sources */,
 				3E03078D1CE33E21003CCA3F /* SensorsDetector.swift in Sources */,
+				3EE2F1171CEC9EBC008A2669 /* Delay.swift in Sources */,
 				3E68D5D41CCE4D8C002C8D63 /* Alerts.swift in Sources */,
 				3E68D5A31CCE40B8002C8D63 /* SettingsViewController.swift in Sources */,
 			);
