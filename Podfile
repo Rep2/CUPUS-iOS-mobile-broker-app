@@ -11,9 +11,10 @@ end
 
 target 'CUPUS Mobile brokerTests' do
 
+pod 'GoogleMaps'
+
 end
 
 target 'CUPUS Mobile brokerUITests' do
 
 end
-

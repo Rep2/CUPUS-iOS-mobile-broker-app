@@ -38,16 +38,6 @@
                ReferencedContainer = "container:CUPUS Mobile broker.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3EBD20EF1CCE205100905452"
-               BuildableName = "CUPUS Mobile brokerUITests.xctest"
-               BlueprintName = "CUPUS Mobile brokerUITests"
-               ReferencedContainer = "container:CUPUS Mobile broker.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
