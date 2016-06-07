@@ -12,7 +12,7 @@ class SocketConnector{
     
     func connect() throws{
         
-        let socket = try IRSocket(domain: AF_INET, type: SOCK_DGRAM, proto: 0)
+        let socket = try Socket(domain: AF_INET, type: SOCK_DGRAM, proto: 0)
         
         do{
             // Binds socket to OS given address
@@ -21,7 +21,7 @@ class SocketConnector{
             
             print("socket bind succeded")
             
-        }catch IRSocketError.BindFailed{
+        }catch SocketError.BindFailed{
             print("Socket bind failed")
             exit(1)
             

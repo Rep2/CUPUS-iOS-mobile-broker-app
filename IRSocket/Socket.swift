@@ -13,37 +13,33 @@ import Foundation
     import Darwin.C
 #endif
 
-enum IRSocketError: ErrorType{
+enum SocketError: ErrorType{
     case SocketCreation(message: String)
     case BindFailed(error: Int32)
     case CloseFailed(error: Int32)
     case GetNameFailed(error: Int32)
     case ListenFailed(message:String)
+    case ConnectFailed
+    case SendError(message: String)
+    case RecieveError(message: String)
 }
 
 /// Basic C socket binding
-class IRSocket{
+class Socket{
     
     /// C socket
-    private let cSocket:Int32
+    internal let cSocket:Int32
     
     /**
      Creates UDP socket
      
      - Throws: 'IRSocketError.SocketCreation' on socket creation failed
     */
-    static func UDPSocket() throws -> IRSocket{
-        return try IRSocket(domain: AF_INET, type: SOCK_DGRAM, proto: 0)
+    static func UDPSocket() throws -> Socket{
+        return try Socket(domain: AF_INET, type: SOCK_DGRAM, proto: 0)
     }
     
-    /**
-     Creates TCP socket
-     
-     - Throws: 'IRSocketError.SocketCreation' on socket creation failed
-     */
-    static func TCPSocket() throws -> IRSocket{
-        return try IRSocket(domain: AF_INET, type: SOCK_STREAM, proto: 0)
-    }
+    
     
     /** Creates new instance of IRSocket containing C socket
      - Returns: IRSocket nil if creation fails
@@ -54,7 +50,7 @@ class IRSocket{
         cSocket = socket(domain, type, proto)
         
         if cSocket == -1{
-            throw IRSocketError.SocketCreation(message: "Socket creation failed")
+            throw SocketError.SocketCreation(message: "Socket creation failed")
         }
     }
     
@@ -72,9 +68,10 @@ class IRSocket{
         }
         
         if bind != 0{
-            throw IRSocketError.BindFailed(error: bind)
+            throw SocketError.BindFailed(error: bind)
         }
     }
+
     
     
     /// Updates addr to correct value
@@ -89,7 +86,7 @@ class IRSocket{
         }
         
         if err == -1{
-            throw IRSocketError.GetNameFailed(error: err)
+            throw SocketError.GetNameFailed(error: err)
         }
 
     }
@@ -142,10 +139,38 @@ class IRSocket{
         
     }
     
+    func send(string:String) throws -> Int{
+        
+        return try string.withCString { cstr -> Int in
+            let lengthSent = write(cSocket, cstr, string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+            
+            if lengthSent < 0{
+                throw SocketError.SendError(message: "Error while sending")
+            }
+            else if lengthSent < string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding){
+                throw SocketError.SendError(message: "Only \(lengthSent) bytes sent")
+            }
+            
+            return lengthSent
+        }
+    }
+    
+    func recieve() throws -> ArraySlice<UInt8>{
+        let inBuffer = Array<UInt8>(count: 1000, repeatedValue: 0)
+        
+        let n = read(cSocket, UnsafeMutablePointer<Void>(inBuffer), 1000)
+        
+        if n < 0{
+            throw SocketError.RecieveError(message: "Error while recieving")
+        }
+        
+        return inBuffer.prefix(n)
+    }
+    
     func startListening() throws{
         repeat{
             if listen(cSocket, 10) == -1{
-                throw IRSocketError.ListenFailed(message: "Listen funcion failed")
+                throw SocketError.ListenFailed(message: "Listen funcion failed")
             }
             
             
@@ -157,15 +182,15 @@ class IRSocket{
             }
             
             if clientSocket < 0{
-                throw IRSocketError.ListenFailed(message: "Accept socket failure")
+                throw SocketError.ListenFailed(message: "Accept socket failure")
             }
             
-            var inBuffer = [UInt8](count: 1000, repeatedValue: 0)
+            let inBuffer = [UInt8](count: 1000, repeatedValue: 0)
             
             let n = read(clientSocket, UnsafeMutablePointer<Void>(inBuffer), 1000)
             
             if n < 0{
-                throw IRSocketError.ListenFailed(message: "Message length less than 0")
+                throw SocketError.ListenFailed(message: "Message length less than 0")
             }
             
             print(inBuffer)

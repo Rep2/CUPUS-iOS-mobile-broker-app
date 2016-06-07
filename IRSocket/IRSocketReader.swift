@@ -10,9 +10,9 @@ import Foundation
 
 class IRSocketReader{
     
-    let socket: IRSocket
+    let socket: Socket
     
-    init(socket:IRSocket){
+    init(socket:Socket){
         
         self.socket = socket
         

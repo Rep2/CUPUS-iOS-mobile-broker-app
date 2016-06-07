@@ -13,7 +13,7 @@ class SocketBindTest:XCTestCase {
     
     func testSocketBindAnyAddres() throws{
         do{
-            let socket = try IRSocket.TCPSocket()
+            let socket = try TCPSocket()
             
             let addr = IRSockaddr(port: 8080)
             
@@ -26,14 +26,14 @@ class SocketBindTest:XCTestCase {
     
     func testSocketBindStringAdressSuccess() throws{
         do{
-            let socket = try IRSocket.TCPSocket()
+            let socket = try TCPSocket()
             
             let addr = try IRSockaddr(ip: "127.0.0.1",port: 8080)
             
             try socket.bind(addr)
             
             XCTAssert(true)
-        }catch IRSocketError.BindFailed{
+        }catch SocketError.BindFailed{
             XCTAssert(false)
         }catch{
             XCTAssert(false)
@@ -42,14 +42,14 @@ class SocketBindTest:XCTestCase {
     
     func testSocketBindStringAdressFail() throws{
         do{
-            let socket = try IRSocket.TCPSocket()
+            let socket = try TCPSocket()
             
             let addr = try IRSockaddr(ip: "127.5.6.12",port: 8080)
             
             try socket.bind(addr)
             
             XCTAssert(false)
-        }catch IRSocketError.BindFailed{
+        }catch SocketError.BindFailed{
             XCTAssert(true)
         }catch{
             XCTAssert(false)

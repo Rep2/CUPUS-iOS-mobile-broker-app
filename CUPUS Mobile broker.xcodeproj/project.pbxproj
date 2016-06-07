@@ -53,9 +53,9 @@
 		3EE2F1171CEC9EBC008A2669 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2F1161CEC9EBC008A2669 /* Delay.swift */; };
 		3EFEE3091D058C4B00215EA8 /* IRDataTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3041D058C4B00215EA8 /* IRDataTransform.swift */; };
 		3EFEE30A1D058C4B00215EA8 /* IRSockaddr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3051D058C4B00215EA8 /* IRSockaddr.swift */; };
-		3EFEE30B1D058C4B00215EA8 /* IRSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3061D058C4B00215EA8 /* IRSocket.swift */; };
+		3EFEE30B1D058C4B00215EA8 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3061D058C4B00215EA8 /* Socket.swift */; };
 		3EFEE30C1D058C4B00215EA8 /* IRSocketReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3071D058C4B00215EA8 /* IRSocketReader.swift */; };
-		3EFEE30D1D058C4B00215EA8 /* IRUDPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3081D058C4B00215EA8 /* IRUDPSocket.swift */; };
+		3EFEE30D1D058C4B00215EA8 /* TCPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3081D058C4B00215EA8 /* TCPSocket.swift */; };
 		3EFEE30F1D058D6200215EA8 /* SocketConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE30E1D058D6200215EA8 /* SocketConnector.swift */; };
 		5943EB1C71C691D97348A795 /* Pods_CUPUS_Mobile_brokerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BC4A49DD02CC09469282C2 /* Pods_CUPUS_Mobile_brokerTests.framework */; };
 		8F6E9C6B4EFEB9FA8108D2ED /* Pods_CUPUS_Mobile_brokerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4A3C5D15BB002046CDA84 /* Pods_CUPUS_Mobile_brokerUITests.framework */; };
@@ -137,9 +137,9 @@
 		3EE2F1161CEC9EBC008A2669 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		3EFEE3041D058C4B00215EA8 /* IRDataTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRDataTransform.swift; sourceTree = "<group>"; };
 		3EFEE3051D058C4B00215EA8 /* IRSockaddr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRSockaddr.swift; sourceTree = "<group>"; };
-		3EFEE3061D058C4B00215EA8 /* IRSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRSocket.swift; sourceTree = "<group>"; };
+		3EFEE3061D058C4B00215EA8 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 		3EFEE3071D058C4B00215EA8 /* IRSocketReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRSocketReader.swift; sourceTree = "<group>"; };
-		3EFEE3081D058C4B00215EA8 /* IRUDPSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRUDPSocket.swift; sourceTree = "<group>"; };
+		3EFEE3081D058C4B00215EA8 /* TCPSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPSocket.swift; sourceTree = "<group>"; };
 		3EFEE30E1D058D6200215EA8 /* SocketConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketConnector.swift; sourceTree = "<group>"; };
 		3EFEE3141D058DFC00215EA8 /* SocketTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocketTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA7FA182B34743CC19BF9C0 /* Pods-CUPUS Mobile brokerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CUPUS Mobile brokerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CUPUS Mobile brokerUITests/Pods-CUPUS Mobile brokerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -421,9 +421,9 @@
 			children = (
 				3EFEE3041D058C4B00215EA8 /* IRDataTransform.swift */,
 				3EFEE3051D058C4B00215EA8 /* IRSockaddr.swift */,
-				3EFEE3061D058C4B00215EA8 /* IRSocket.swift */,
+				3EFEE3061D058C4B00215EA8 /* Socket.swift */,
 				3EFEE3071D058C4B00215EA8 /* IRSocketReader.swift */,
-				3EFEE3081D058C4B00215EA8 /* IRUDPSocket.swift */,
+				3EFEE3081D058C4B00215EA8 /* TCPSocket.swift */,
 				3EC35C9C1D05D8AF00EBBE47 /* IRSocketListener.swift */,
 			);
 			path = IRSocket;
@@ -800,11 +800,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EFEE30D1D058C4B00215EA8 /* IRUDPSocket.swift in Sources */,
+				3EFEE30D1D058C4B00215EA8 /* TCPSocket.swift in Sources */,
 				3EBD210B1CCE21BA00905452 /* Wireframe.swift in Sources */,
 				3E68D5D01CCE4795002C8D63 /* SubscriptionOptions.swift in Sources */,
 				3EBD20D71CCE205100905452 /* MapViewController.swift in Sources */,
-				3EFEE30B1D058C4B00215EA8 /* IRSocket.swift in Sources */,
+				3EFEE30B1D058C4B00215EA8 /* Socket.swift in Sources */,
 				3E68D5BD1CCE45F8002C8D63 /* TwoLabelLeftInfoCell.swift in Sources */,
 				3E68D5B81CCE45F8002C8D63 /* GenericCellImplementation.swift in Sources */,
 				3EFEE30C1D058C4B00215EA8 /* IRSocketReader.swift in Sources */,

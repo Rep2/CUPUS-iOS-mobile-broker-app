@@ -10,10 +10,10 @@ import Foundation
 
 class IRSocketListener{
     
-    let socket:IRSocket
+    let socket:Socket
     
     init(port: UInt16) throws{
-        socket = try IRSocket.TCPSocket()
+        socket = try TCPSocket()
         
         let address = IRSockaddr(port: port)
         

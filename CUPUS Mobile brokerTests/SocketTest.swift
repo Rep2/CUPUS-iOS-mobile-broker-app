@@ -13,7 +13,7 @@ class SocketTest: XCTestCase {
     
     func testUDPSocketCreate(){
         do{
-            _ = try IRSocket.UDPSocket()
+            _ = try Socket.UDPSocket()
             XCTAssert(true)
         }catch{
             XCTAssert(false)
@@ -22,7 +22,7 @@ class SocketTest: XCTestCase {
     
     func testTCPSocketCreate(){
         do{
-            _ = try IRSocket.TCPSocket()
+            _ = try TCPSocket()
             XCTAssert(true)
         }catch{
             XCTAssert(false)
