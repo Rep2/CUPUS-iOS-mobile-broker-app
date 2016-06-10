@@ -78,11 +78,6 @@ class AudioLevelRecording: NSObject, AVAudioRecorderDelegate{
         }
     }
     
-    
-    // Values used to convert read value to SPL
-    private let referenceLevel:Float = 5
-    private let range:Float = 180
-    private let offset:Float = 20
 
     private var recorder:AVAudioRecorder!
     
@@ -124,10 +119,8 @@ class AudioLevelRecording: NSObject, AVAudioRecorderDelegate{
                     self.recorder.updateMeters()
                     
                     let value = self.recorder.averagePowerForChannel(0)
-                    
-                    let SPL = 20 * log10(self.referenceLevel * powf(10, (value/20)) * self.range) + self.offset;
-                    
-                    self.sendRecordingToSubscribers(SPL)
+                 
+                    self.sendRecordingToSubscribers(value)
                     
                     usleep(UInt32(self.readPeriod * 1000000.0))
                 }
@@ -143,6 +136,7 @@ class AudioLevelRecording: NSObject, AVAudioRecorderDelegate{
      */
     func stopRecording(){
         isRecording = false
+        recorder.stop()
     }
     
     // Registered observers to which recorded value is sent

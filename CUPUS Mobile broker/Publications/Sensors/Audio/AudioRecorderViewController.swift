@@ -45,7 +45,7 @@ class AudioRecorderViewController: UIViewController{
         timeformater.dateFormat = "dd.MM.yyyy HH:mm:ss"
         timeformater.timeZone = NSTimeZone(name: "Europe/Zagreb")
         
-        let line = UIView(frame: CGRect(x: 18, y: 230, width: self.view.bounds.size.width - 36, height: 0.5))
+        let line = UIView(frame: CGRect(x: 18, y: 198, width: self.view.bounds.size.width - 36, height: 0.5))
         line.backgroundColor = UIColor.blackColor()
         
         view.addSubview(line)
