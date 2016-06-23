@@ -33,7 +33,6 @@
 		3E68D5CC1CCE4621002C8D63 /* GenericTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D5C81CCE4621002C8D63 /* GenericTableViewController.swift */; };
 		3E68D5CD1CCE4621002C8D63 /* ViewControllerWithDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D5C91CCE4621002C8D63 /* ViewControllerWithDecorator.swift */; };
 		3E68D5D01CCE4795002C8D63 /* SubscriptionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D5CF1CCE4794002C8D63 /* SubscriptionOptions.swift */; };
-		3E68D5D21CCE4A67002C8D63 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D5D11CCE4A67002C8D63 /* Subscription.swift */; };
 		3E68D5D41CCE4D8C002C8D63 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68D5D31CCE4D8C002C8D63 /* Alerts.swift */; };
 		3E68D5D61CCE5A31002C8D63 /* OneLabelRightImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E68D5D51CCE5A31002C8D63 /* OneLabelRightImageTableViewCell.xib */; };
 		3E914D3B1D05B90F00841B5B /* SocketAddressTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E914D3A1D05B90F00841B5B /* SocketAddressTest.swift */; };
@@ -48,17 +47,31 @@
 		3EBD210B1CCE21BA00905452 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD21091CCE21BA00905452 /* Wireframe.swift */; };
 		3EBD210F1CCE2C0F00905452 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD210D1CCE2C0F00905452 /* BaseNavigationViewController.swift */; };
 		3EBD21101CCE2C0F00905452 /* TabbarControllerCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBD210E1CCE2C0F00905452 /* TabbarControllerCreator.swift */; };
-		3EC35C9D1D05D8AF00EBBE47 /* IRSocketListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC35C9C1D05D8AF00EBBE47 /* IRSocketListener.swift */; };
+		3EC35C9D1D05D8AF00EBBE47 /* TCPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC35C9C1D05D8AF00EBBE47 /* TCPServer.swift */; };
 		3EC35CCC1D05E29300EBBE47 /* SocketSendTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC35CCB1D05E29300EBBE47 /* SocketSendTest.swift */; };
 		3EE2F1171CEC9EBC008A2669 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2F1161CEC9EBC008A2669 /* Delay.swift */; };
 		3EFEE3091D058C4B00215EA8 /* IRDataTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3041D058C4B00215EA8 /* IRDataTransform.swift */; };
-		3EFEE30A1D058C4B00215EA8 /* IRSockaddr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3051D058C4B00215EA8 /* IRSockaddr.swift */; };
+		3EFEE30A1D058C4B00215EA8 /* SocketAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3051D058C4B00215EA8 /* SocketAddress.swift */; };
 		3EFEE30B1D058C4B00215EA8 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3061D058C4B00215EA8 /* Socket.swift */; };
 		3EFEE30C1D058C4B00215EA8 /* IRSocketReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3071D058C4B00215EA8 /* IRSocketReader.swift */; };
 		3EFEE30D1D058C4B00215EA8 /* TCPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE3081D058C4B00215EA8 /* TCPSocket.swift */; };
 		3EFEE30F1D058D6200215EA8 /* SocketConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFEE30E1D058D6200215EA8 /* SocketConnector.swift */; };
 		5943EB1C71C691D97348A795 /* Pods_CUPUS_Mobile_brokerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BC4A49DD02CC09469282C2 /* Pods_CUPUS_Mobile_brokerTests.framework */; };
 		8F6E9C6B4EFEB9FA8108D2ED /* Pods_CUPUS_Mobile_brokerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4A3C5D15BB002046CDA84 /* Pods_CUPUS_Mobile_brokerUITests.framework */; };
+		AD02BFFB1D1B137A00EF653B /* CUPUSMobileBrokerContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02BFFA1D1B137A00EF653B /* CUPUSMobileBrokerContext.swift */; };
+		AD02BFFE1D1B15F700EF653B /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02BFFD1D1B15F700EF653B /* Subscriber.swift */; };
+		AD02C0051D1B1C3500EF653B /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02C0001D1B1C3500EF653B /* Feature.swift */; };
+		AD02C0061D1B1C3500EF653B /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02C0011D1B1C3500EF653B /* Geometry.swift */; };
+		AD02C0071D1B1C3500EF653B /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02C0021D1B1C3500EF653B /* Payload.swift */; };
+		AD02C0081D1B1C3500EF653B /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02C0031D1B1C3500EF653B /* Property.swift */; };
+		AD02C0091D1B1C3500EF653B /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02C0041D1B1C3500EF653B /* Subscription.swift */; };
+		AD02C00B1D1B3F4F00EF653B /* SubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD02C00A1D1B3F4F00EF653B /* SubscriptionModel.swift */; };
+		AD07AA971D1BA71600DE4408 /* RandomString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07AA961D1BA71600DE4408 /* RandomString.swift */; };
+		AD07AA991D1BD75B00DE4408 /* CLLocationFromDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD07AA981D1BD75B00DE4408 /* CLLocationFromDistance.swift */; };
+		AD6432401D1B973B00527595 /* CUPUSSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD64323F1D1B973B00527595 /* CUPUSSubscription.swift */; };
+		ADA4565C1D1AEB7800FD9187 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4565B1D1AEB7800FD9187 /* Context.swift */; };
+		ADA4565E1D1AF01700FD9187 /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4565D1D1AF01700FD9187 /* TCPClient.swift */; };
+		ADA456601D1B0D1F00FD9187 /* CUPUSTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4565F1D1B0D1F00FD9187 /* CUPUSTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,7 +124,6 @@
 		3E68D5C81CCE4621002C8D63 /* GenericTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableViewController.swift; sourceTree = "<group>"; };
 		3E68D5C91CCE4621002C8D63 /* ViewControllerWithDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerWithDecorator.swift; sourceTree = "<group>"; };
 		3E68D5CF1CCE4794002C8D63 /* SubscriptionOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionOptions.swift; path = Subscription/SubscriptionOptions.swift; sourceTree = "<group>"; };
-		3E68D5D11CCE4A67002C8D63 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subscription.swift; path = Subscription/Subscription.swift; sourceTree = "<group>"; };
 		3E68D5D31CCE4D8C002C8D63 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		3E68D5D51CCE5A31002C8D63 /* OneLabelRightImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OneLabelRightImageTableViewCell.xib; sourceTree = "<group>"; };
 		3E914D3A1D05B90F00841B5B /* SocketAddressTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAddressTest.swift; sourceTree = "<group>"; };
@@ -132,11 +144,11 @@
 		3EBD21091CCE21BA00905452 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		3EBD210D1CCE2C0F00905452 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		3EBD210E1CCE2C0F00905452 /* TabbarControllerCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarControllerCreator.swift; sourceTree = "<group>"; };
-		3EC35C9C1D05D8AF00EBBE47 /* IRSocketListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRSocketListener.swift; sourceTree = "<group>"; };
+		3EC35C9C1D05D8AF00EBBE47 /* TCPServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPServer.swift; sourceTree = "<group>"; };
 		3EC35CCB1D05E29300EBBE47 /* SocketSendTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketSendTest.swift; sourceTree = "<group>"; };
 		3EE2F1161CEC9EBC008A2669 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		3EFEE3041D058C4B00215EA8 /* IRDataTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRDataTransform.swift; sourceTree = "<group>"; };
-		3EFEE3051D058C4B00215EA8 /* IRSockaddr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRSockaddr.swift; sourceTree = "<group>"; };
+		3EFEE3051D058C4B00215EA8 /* SocketAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAddress.swift; sourceTree = "<group>"; };
 		3EFEE3061D058C4B00215EA8 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
 		3EFEE3071D058C4B00215EA8 /* IRSocketReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRSocketReader.swift; sourceTree = "<group>"; };
 		3EFEE3081D058C4B00215EA8 /* TCPSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPSocket.swift; sourceTree = "<group>"; };
@@ -145,6 +157,20 @@
 		5BA7FA182B34743CC19BF9C0 /* Pods-CUPUS Mobile brokerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CUPUS Mobile brokerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CUPUS Mobile brokerUITests/Pods-CUPUS Mobile brokerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AECA9A85FFDE9D977EFE17 /* Pods-CUPUS Mobile brokerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CUPUS Mobile brokerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CUPUS Mobile brokerTests/Pods-CUPUS Mobile brokerTests.release.xcconfig"; sourceTree = "<group>"; };
 		83BD9A1181F3E7C69ADB936B /* Pods-CUPUS Mobile broker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CUPUS Mobile broker.release.xcconfig"; path = "Pods/Target Support Files/Pods-CUPUS Mobile broker/Pods-CUPUS Mobile broker.release.xcconfig"; sourceTree = "<group>"; };
+		AD02BFFA1D1B137A00EF653B /* CUPUSMobileBrokerContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CUPUSMobileBrokerContext.swift; path = "CUPUS Swift Mobile Broker/CUPUSMobileBrokerContext.swift"; sourceTree = "<group>"; };
+		AD02BFFD1D1B15F700EF653B /* Subscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subscriber.swift; path = "CUPUS Swift Mobile Broker/Subscriber/Subscriber.swift"; sourceTree = "<group>"; };
+		AD02C0001D1B1C3500EF653B /* Feature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Feature.swift; path = "CUPUS Swift Mobile Broker/Model/Feature.swift"; sourceTree = "<group>"; };
+		AD02C0011D1B1C3500EF653B /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Geometry.swift; path = "CUPUS Swift Mobile Broker/Model/Geometry.swift"; sourceTree = "<group>"; };
+		AD02C0021D1B1C3500EF653B /* Payload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Payload.swift; path = "CUPUS Swift Mobile Broker/Model/Payload.swift"; sourceTree = "<group>"; };
+		AD02C0031D1B1C3500EF653B /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Property.swift; path = "CUPUS Swift Mobile Broker/Model/Property.swift"; sourceTree = "<group>"; };
+		AD02C0041D1B1C3500EF653B /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subscription.swift; path = "CUPUS Swift Mobile Broker/Model/Subscription.swift"; sourceTree = "<group>"; };
+		AD02C00A1D1B3F4F00EF653B /* SubscriptionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubscriptionModel.swift; path = Subscription/SubscriptionModel.swift; sourceTree = "<group>"; };
+		AD07AA961D1BA71600DE4408 /* RandomString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomString.swift; sourceTree = "<group>"; };
+		AD07AA981D1BD75B00DE4408 /* CLLocationFromDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationFromDistance.swift; sourceTree = "<group>"; };
+		AD64323F1D1B973B00527595 /* CUPUSSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CUPUSSubscription.swift; sourceTree = "<group>"; };
+		ADA4565B1D1AEB7800FD9187 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		ADA4565D1D1AF01700FD9187 /* TCPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
+		ADA4565F1D1B0D1F00FD9187 /* CUPUSTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CUPUSTest.swift; sourceTree = "<group>"; };
 		B5FDE4C30871BEDB41C58784 /* Pods_SocketTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocketTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE4A3C5D15BB002046CDA84 /* Pods_CUPUS_Mobile_brokerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CUPUS_Mobile_brokerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE46A49C9AF1AF52A5097F54 /* Pods-CUPUS Mobile brokerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CUPUS Mobile brokerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CUPUS Mobile brokerTests/Pods-CUPUS Mobile brokerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -323,9 +349,9 @@
 		3E68D5CE1CCE474C002C8D63 /* Subscription */ = {
 			isa = PBXGroup;
 			children = (
+				AD02C00A1D1B3F4F00EF653B /* SubscriptionModel.swift */,
 				3EBD20D61CCE205100905452 /* MapViewController.swift */,
 				3E68D5CF1CCE4794002C8D63 /* SubscriptionOptions.swift */,
-				3E68D5D11CCE4A67002C8D63 /* Subscription.swift */,
 			);
 			name = Subscription;
 			sourceTree = "<group>";
@@ -333,6 +359,7 @@
 		3EBD20C81CCE205000905452 = {
 			isa = PBXGroup;
 			children = (
+				AD07AA981D1BD75B00DE4408 /* CLLocationFromDistance.swift */,
 				3EBD20D31CCE205100905452 /* CUPUS Mobile broker */,
 				3EBD20E81CCE205100905452 /* CUPUS Mobile brokerTests */,
 				3EBD20F31CCE205100905452 /* CUPUS Mobile brokerUITests */,
@@ -356,6 +383,7 @@
 		3EBD20D31CCE205100905452 /* CUPUS Mobile broker */ = {
 			isa = PBXGroup;
 			children = (
+				AD02BFF91D1B135500EF653B /* CUPUS Swift Mobile Broker */,
 				3E318DC51CE1F131006F99B6 /* Publications */,
 				3E68D5D31CCE4D8C002C8D63 /* Alerts.swift */,
 				3E68D5CE1CCE474C002C8D63 /* Subscription */,
@@ -373,6 +401,8 @@
 				3E68D59E1CCE384C002C8D63 /* LocationManager.swift */,
 				3EE2F1161CEC9EBC008A2669 /* Delay.swift */,
 				3EFEE30E1D058D6200215EA8 /* SocketConnector.swift */,
+				ADA4565B1D1AEB7800FD9187 /* Context.swift */,
+				AD07AA961D1BA71600DE4408 /* RandomString.swift */,
 			);
 			path = "CUPUS Mobile broker";
 			sourceTree = "<group>";
@@ -385,6 +415,8 @@
 				3E914D3C1D05BBEA00841B5B /* SocketBindTest.swift */,
 				3EC35CCB1D05E29300EBBE47 /* SocketSendTest.swift */,
 				3EBD20EB1CCE205100905452 /* Info.plist */,
+				ADA4565F1D1B0D1F00FD9187 /* CUPUSTest.swift */,
+				AD64323F1D1B973B00527595 /* CUPUSSubscription.swift */,
 			);
 			path = "CUPUS Mobile brokerTests";
 			sourceTree = "<group>";
@@ -420,11 +452,12 @@
 			isa = PBXGroup;
 			children = (
 				3EFEE3041D058C4B00215EA8 /* IRDataTransform.swift */,
-				3EFEE3051D058C4B00215EA8 /* IRSockaddr.swift */,
+				3EFEE3051D058C4B00215EA8 /* SocketAddress.swift */,
 				3EFEE3061D058C4B00215EA8 /* Socket.swift */,
 				3EFEE3071D058C4B00215EA8 /* IRSocketReader.swift */,
 				3EFEE3081D058C4B00215EA8 /* TCPSocket.swift */,
-				3EC35C9C1D05D8AF00EBBE47 /* IRSocketListener.swift */,
+				3EC35C9C1D05D8AF00EBBE47 /* TCPServer.swift */,
+				ADA4565D1D1AF01700FD9187 /* TCPClient.swift */,
 			);
 			path = IRSocket;
 			sourceTree = SOURCE_ROOT;
@@ -451,6 +484,36 @@
 				B5FDE4C30871BEDB41C58784 /* Pods_SocketTest.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AD02BFF91D1B135500EF653B /* CUPUS Swift Mobile Broker */ = {
+			isa = PBXGroup;
+			children = (
+				AD02BFFF1D1B1C2C00EF653B /* Model */,
+				AD02BFFC1D1B15DF00EF653B /* Subscriber */,
+				AD02BFFA1D1B137A00EF653B /* CUPUSMobileBrokerContext.swift */,
+			);
+			name = "CUPUS Swift Mobile Broker";
+			sourceTree = "<group>";
+		};
+		AD02BFFC1D1B15DF00EF653B /* Subscriber */ = {
+			isa = PBXGroup;
+			children = (
+				AD02BFFD1D1B15F700EF653B /* Subscriber.swift */,
+			);
+			name = Subscriber;
+			sourceTree = "<group>";
+		};
+		AD02BFFF1D1B1C2C00EF653B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD02C0001D1B1C3500EF653B /* Feature.swift */,
+				AD02C0011D1B1C3500EF653B /* Geometry.swift */,
+				AD02C0021D1B1C3500EF653B /* Payload.swift */,
+				AD02C0031D1B1C3500EF653B /* Property.swift */,
+				AD02C0041D1B1C3500EF653B /* Subscription.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -802,37 +865,48 @@
 			files = (
 				3EFEE30D1D058C4B00215EA8 /* TCPSocket.swift in Sources */,
 				3EBD210B1CCE21BA00905452 /* Wireframe.swift in Sources */,
+				AD02C0081D1B1C3500EF653B /* Property.swift in Sources */,
 				3E68D5D01CCE4795002C8D63 /* SubscriptionOptions.swift in Sources */,
 				3EBD20D71CCE205100905452 /* MapViewController.swift in Sources */,
 				3EFEE30B1D058C4B00215EA8 /* Socket.swift in Sources */,
+				AD02BFFB1D1B137A00EF653B /* CUPUSMobileBrokerContext.swift in Sources */,
 				3E68D5BD1CCE45F8002C8D63 /* TwoLabelLeftInfoCell.swift in Sources */,
 				3E68D5B81CCE45F8002C8D63 /* GenericCellImplementation.swift in Sources */,
 				3EFEE30C1D058C4B00215EA8 /* IRSocketReader.swift in Sources */,
+				AD02C0061D1B1C3500EF653B /* Geometry.swift in Sources */,
+				AD07AA971D1BA71600DE4408 /* RandomString.swift in Sources */,
 				3E68D5CA1CCE4621002C8D63 /* GenericViewControllerDecorator.swift in Sources */,
 				3E49F54A1CEB3206005EE3BF /* DetectBluetoothViewController.swift in Sources */,
+				AD07AA991D1BD75B00DE4408 /* CLLocationFromDistance.swift in Sources */,
 				3E68D59F1CCE384C002C8D63 /* LocationManager.swift in Sources */,
+				AD02C0051D1B1C3500EF653B /* Feature.swift in Sources */,
 				3E68D5CD1CCE4621002C8D63 /* ViewControllerWithDecorator.swift in Sources */,
 				3E49F54C1CEB3F87005EE3BF /* AudioRecordingPresenter.swift in Sources */,
 				3EBD21101CCE2C0F00905452 /* TabbarControllerCreator.swift in Sources */,
+				ADA4565E1D1AF01700FD9187 /* TCPClient.swift in Sources */,
 				3E68D5B91CCE45F8002C8D63 /* OneLabelTableViewCell.swift in Sources */,
 				3E68D5BB1CCE45F8002C8D63 /* SingleLabelWithImageCell.swift in Sources */,
 				3E68D5C21CCE45F8002C8D63 /* IRSectionViewModel.swift in Sources */,
 				3E318DD31CE20EB0006F99B6 /* AudioRecorderViewController.swift in Sources */,
 				3EBD20D51CCE205100905452 /* AppDelegate.swift in Sources */,
 				3E68D5C31CCE45F8002C8D63 /* IRTableView.swift in Sources */,
+				AD02C00B1D1B3F4F00EF653B /* SubscriptionModel.swift in Sources */,
 				3E318DCC1CE20211006F99B6 /* PublishViewController.swift in Sources */,
 				3E68D5C11CCE45F8002C8D63 /* IRCellViewModel.swift in Sources */,
 				3EFEE30F1D058D6200215EA8 /* SocketConnector.swift in Sources */,
 				3E68D5C01CCE45F8002C8D63 /* TwoLabelOneImageTableViewCell.swift in Sources */,
 				3E318DC71CE1F40D006F99B6 /* AudioLevelRecording.swift in Sources */,
-				3EFEE30A1D058C4B00215EA8 /* IRSockaddr.swift in Sources */,
+				AD02BFFE1D1B15F700EF653B /* Subscriber.swift in Sources */,
+				3EFEE30A1D058C4B00215EA8 /* SocketAddress.swift in Sources */,
 				3EBD210F1CCE2C0F00905452 /* BaseNavigationViewController.swift in Sources */,
-				3EC35C9D1D05D8AF00EBBE47 /* IRSocketListener.swift in Sources */,
-				3E68D5D21CCE4A67002C8D63 /* Subscription.swift in Sources */,
+				3EC35C9D1D05D8AF00EBBE47 /* TCPServer.swift in Sources */,
 				3E68D5CC1CCE4621002C8D63 /* GenericTableViewController.swift in Sources */,
+				AD02C0091D1B1C3500EF653B /* Subscription.swift in Sources */,
 				3E03078D1CE33E21003CCA3F /* SensorsDetector.swift in Sources */,
+				AD02C0071D1B1C3500EF653B /* Payload.swift in Sources */,
 				3EE2F1171CEC9EBC008A2669 /* Delay.swift in Sources */,
 				3E68D5D41CCE4D8C002C8D63 /* Alerts.swift in Sources */,
+				ADA4565C1D1AEB7800FD9187 /* Context.swift in Sources */,
 				3E68D5A31CCE40B8002C8D63 /* SettingsViewController.swift in Sources */,
 				3EFEE3091D058C4B00215EA8 /* IRDataTransform.swift in Sources */,
 			);
@@ -842,8 +916,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADA456601D1B0D1F00FD9187 /* CUPUSTest.swift in Sources */,
 				3EBD20EA1CCE205100905452 /* SocketTest.swift in Sources */,
 				3E914D3D1D05BBEA00841B5B /* SocketBindTest.swift in Sources */,
+				AD6432401D1B973B00527595 /* CUPUSSubscription.swift in Sources */,
 				3EC35CCC1D05E29300EBBE47 /* SocketSendTest.swift in Sources */,
 				3E914D3B1D05B90F00841B5B /* SocketAddressTest.swift in Sources */,
 			);
@@ -948,7 +1024,7 @@
 				"OTHER_LDFLAGS[arch=*]" = "$(inherited)";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VALID_ARCHS = "arm64 armv7s armv7 armv6";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -990,7 +1066,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "arm64 armv7s armv7";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1026,12 +1102,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DE46A49C9AF1AF52A5097F54 /* Pods-CUPUS Mobile brokerTests.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = YES;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				INFOPLIST_FILE = "CUPUS Mobile brokerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "FER.CUPUS-Mobile-brokerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CUPUS Mobile broker.app/CUPUS Mobile broker";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -1039,12 +1121,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81AECA9A85FFDE9D977EFE17 /* Pods-CUPUS Mobile brokerTests.release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = YES;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				INFOPLIST_FILE = "CUPUS Mobile brokerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "FER.CUPUS-Mobile-brokerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CUPUS Mobile broker.app/CUPUS Mobile broker";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};

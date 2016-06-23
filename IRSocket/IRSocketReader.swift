@@ -18,7 +18,7 @@ class IRSocketReader{
         
     }
     
-    func read(observerFunc: (Array<UInt8>, IRSockaddr) -> Void){
+    func read(observerFunc: (Array<UInt8>, SocketAddress) -> Void){
 
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
             repeat{

@@ -17,7 +17,7 @@ enum SocketAddres: ErrorType{
     case IPCastFailed(message: String)
 }
 
-class IRSockaddr{
+class SocketAddress{
     
     var cSockaddr:sockaddr_in
     
@@ -67,7 +67,7 @@ class IRSockaddr{
      */
     init(ip: String, port: UInt16 = 0, domain:Int32 = AF_INET) throws{
         
-        let inAddr = try IRSockaddr.IPv4ToInt(ip)
+        let inAddr = try SocketAddress.IPv4ToInt(ip)
         
         cSockaddr = sockaddr_in(
             sin_len:    __uint8_t(sizeof(sockaddr_in)),

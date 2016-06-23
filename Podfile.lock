@@ -1,12 +1,18 @@
 PODS:
   - GoogleMaps (1.13.2)
+  - Unbox (1.7)
+  - Wrap (1.1.1)
 
 DEPENDENCIES:
   - GoogleMaps
+  - Unbox
+  - Wrap
 
 SPEC CHECKSUMS:
   GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
+  Unbox: 576f1470399f84c411ced0a8ce4c4caaeb8acf1d
+  Wrap: c4d3cac4f358329f8c707cafc4dca9eb4db9ec5c
 
-PODFILE CHECKSUM: 0ef0525436ee926e8ffbdc0b70e23c025693e41a
+PODFILE CHECKSUM: 4d679af7153554883705e2461e663b95a3b607a4
 
 COCOAPODS: 1.0.1

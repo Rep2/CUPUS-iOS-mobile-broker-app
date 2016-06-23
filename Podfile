@@ -6,6 +6,8 @@ use_frameworks!
 target 'CUPUS Mobile broker' do
 
 pod 'GoogleMaps'
+pod 'Unbox'
+pod "Wrap"
 
 end
 

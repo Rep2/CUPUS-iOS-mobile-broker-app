@@ -11,25 +11,15 @@ import XCTest
 
 class SocketSendTest:XCTestCase {
 
-    func testSend(){
-        do{
-            let socket = try TCPSocket()
-            
-            socket.sendTo(IRSockaddr(port: 8889), string: "Message")
-            
-            XCTAssert(true)
-        }catch{
-            XCTAssert(false)
-        }
-    }
     
     func testConnect(){
         do{
-            let socket = try TCPSocket()
+            let serverSocket = try TCPServerImplementation.Create(8000)
+            try serverSocket.startListening({ (recievedText) in
+                print(recievedText)
+            })
             
-            try socket.bind(IRSockaddr(port: 8000))
-            
-            try socket.connectTo(IRSockaddr(port: 10000))
+            _ = try TCPClientImplementation.Create(SocketAddress(port: 8000))
             
             XCTAssert(true)
         }catch{
@@ -37,30 +27,34 @@ class SocketSendTest:XCTestCase {
         }
     }
     
-    func testSubscribe(){
+    func testConnectFail(){
         do{
-            let socket = try TCPSocket()
+            _ = try TCPClientImplementation.Create(SocketAddress(port: 18000))
             
-            try socket.connectTo(IRSockaddr(port: 10000))
+            XCTAssert(false)
+        }catch SocketError.ConnectFailed{
+            XCTAssert(true)
+        }
+        catch{
+            XCTAssert(false)
+        }
+    }
+    
+    func testSend(){
+        do{
+            let serverSocket = try TCPServerImplementation.Create(8001)
+            try serverSocket.startListening({ (recievedText) in
+                print(recievedText)
+            })
             
-            let outString = "{\"eid\":\"aa596564-a3de-4645-964b-36581501cbeb\",\"id\":\"e1e5b1eb2d71f5da8c6600e3889349cf\",\"type\":\"SubscriberTcpRegisterMessage\",\"message\":\"{\"port\":0,\"ip\":\"10.201.17.170\",\"en\":\"Subscriber\",\"id\":\"aa596564-a3de-4645-964b-36581501cbeb\"}\",\"timestamp\":1465301410588}"
-            let outLength = outString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+            let clientSocket = try TCPClientImplementation.Create(SocketAddress(port: 8001))
+            let sentCount = try clientSocket.send("Test send")
             
-            let lengthSent = try socket.send(outString)
-            
-            XCTAssert(outLength == lengthSent)
-            
-            var ret = socket.recive()
-            
-            print(ret)
-            
-            var string = String(bytes: ret, encoding: NSUTF8StringEncoding)
-            
-            print(string)
-            
+            XCTAssert(sentCount == 9)
         }catch{
             XCTAssert(false)
         }
     }
+    
     
 }

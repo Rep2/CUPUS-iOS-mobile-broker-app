@@ -16,7 +16,7 @@ class SocketConnector{
         
         do{
             // Binds socket to OS given address
-            let addr = IRSockaddr()
+            let addr = SocketAddress()
             try socket.bind(addr)
             
             print("socket bind succeded")

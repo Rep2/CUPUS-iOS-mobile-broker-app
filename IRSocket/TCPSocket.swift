@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class TCPSocket: Socket{
     
     /**
@@ -26,7 +27,7 @@ class TCPSocket: Socket{
      
      - Throws: 'SocketError.ConnectFailed' on failed connect
     */
-    func connectTo(address: IRSockaddr) throws{
+    func connectTo(address: SocketAddress) throws{
         let connectSuccess = withUnsafePointer(&address.cSockaddr) {
             connect(cSocket, UnsafePointer<sockaddr>($0), 16)
         }
@@ -35,5 +36,7 @@ class TCPSocket: Socket{
             throw SocketError.ConnectFailed
         }
     }
+    
+   
     
 }

@@ -62,7 +62,7 @@ class Socket{
  
      - Throws: IRSocketError on bind fail
     */
-    func bind(addr:IRSockaddr) throws{
+    func bind(addr:SocketAddress) throws{
         let bind = withUnsafePointer(&addr.cSockaddr) {
             Darwin.bind(cSocket, UnsafePointer<sockaddr>($0), 16)
         }
@@ -78,7 +78,7 @@ class Socket{
     /// - Parameter addr: Binding address
     ///
     /// - Throws: IRSocketError
-    func getName(addr:IRSockaddr) throws{
+    func getName(addr:SocketAddress) throws{
         var src_addr_len = socklen_t(sizeofValue(socket))
         
         let err = withUnsafePointer(&addr.cSockaddr) {
@@ -113,7 +113,7 @@ class Socket{
     /// - Parameter maxLen: maximum data length in bytes
     /// - Parameter flag: check http://linux.die.net/man/2/recvfrom
     /// - Return: recived byte array and sender address
-    func reciveAndStoreAddres(maxLen: Int = 500, flag: Int32 = 0) -> (Array<UInt8>, IRSockaddr){
+    func reciveAndStoreAddres(maxLen: Int = 500, flag: Int32 = 0) -> (Array<UInt8>, SocketAddress){
         let buffer:Array<UInt8> = Array(count: maxLen, repeatedValue: 0)
         
         var sockLen = socklen_t(16)
@@ -123,11 +123,11 @@ class Socket{
             recvfrom(cSocket , UnsafeMutablePointer<Void>(buffer), maxLen, flag, UnsafeMutablePointer($0), &sockLen)
         }
         
-        return (Array(buffer[0..<count]), IRSockaddr(cSocket: addr))
+        return (Array(buffer[0..<count]), SocketAddress(cSocket: addr))
     }
     
     
-    func sendTo(addr:IRSockaddr, string:String){
+    func sendTo(addr:SocketAddress, string:String){
         
         string.withCString { cstr -> Void in
             withUnsafePointer(&addr.cSockaddr) { ptr -> Void in
@@ -139,64 +139,9 @@ class Socket{
         
     }
     
-    func send(string:String) throws -> Int{
-        
-        return try string.withCString { cstr -> Int in
-            let lengthSent = write(cSocket, cstr, string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
-            
-            if lengthSent < 0{
-                throw SocketError.SendError(message: "Error while sending")
-            }
-            else if lengthSent < string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding){
-                throw SocketError.SendError(message: "Only \(lengthSent) bytes sent")
-            }
-            
-            return lengthSent
-        }
-    }
     
-    func recieve() throws -> ArraySlice<UInt8>{
-        let inBuffer = Array<UInt8>(count: 1000, repeatedValue: 0)
-        
-        let n = read(cSocket, UnsafeMutablePointer<Void>(inBuffer), 1000)
-        
-        if n < 0{
-            throw SocketError.RecieveError(message: "Error while recieving")
-        }
-        
-        return inBuffer.prefix(n)
-    }
     
-    func startListening() throws{
-        repeat{
-            if listen(cSocket, 10) == -1{
-                throw SocketError.ListenFailed(message: "Listen funcion failed")
-            }
-            
-            
-            var socketLength = socklen_t(16)
-            var clientAddress = sockaddr_in()
-            
-            let clientSocket = withUnsafeMutablePointer(&clientAddress) {
-                accept(cSocket, UnsafeMutablePointer($0), &socketLength)
-            }
-            
-            if clientSocket < 0{
-                throw SocketError.ListenFailed(message: "Accept socket failure")
-            }
-            
-            let inBuffer = [UInt8](count: 1000, repeatedValue: 0)
-            
-            let n = read(clientSocket, UnsafeMutablePointer<Void>(inBuffer), 1000)
-            
-            if n < 0{
-                throw SocketError.ListenFailed(message: "Message length less than 0")
-            }
-            
-            print(inBuffer)
-        }while(true)
-        
-    }
+    
  
     
     /// Closes socket

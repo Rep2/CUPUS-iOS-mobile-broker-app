@@ -13,7 +13,7 @@ public class SocketAddressTest: XCTestCase {
 
     func testCastIPStringToInt(){
         do{
-            _ = try IRSockaddr.IPv4ToInt("1.1.1.1")
+            _ = try SocketAddress.IPv4ToInt("1.1.1.1")
         }catch{
             XCTAssert(false)
         }
@@ -22,7 +22,7 @@ public class SocketAddressTest: XCTestCase {
     }
     
     func testCastIPIntToString(){
-        let str = IRSockaddr.IPv4ToString(16843009)
+        let str = SocketAddress.IPv4ToString(16843009)
         
         XCTAssert(str == "1.1.1.1")
     }
@@ -32,9 +32,9 @@ public class SocketAddressTest: XCTestCase {
         do{
             let ip = "192.31.32.11"
             
-            let result = try IRSockaddr.IPv4ToInt(ip)
+            let result = try SocketAddress.IPv4ToInt(ip)
             
-            let str = IRSockaddr.IPv4ToString(result.s_addr)
+            let str = SocketAddress.IPv4ToString(result.s_addr)
             
             XCTAssert(ip == str)
         }catch{

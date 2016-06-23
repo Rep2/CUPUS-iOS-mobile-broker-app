@@ -15,7 +15,7 @@ class SocketBindTest:XCTestCase {
         do{
             let socket = try TCPSocket()
             
-            let addr = IRSockaddr(port: 8080)
+            let addr = SocketAddress(port: 8080)
             
             try socket.bind(addr)
             XCTAssert(true)
@@ -28,7 +28,7 @@ class SocketBindTest:XCTestCase {
         do{
             let socket = try TCPSocket()
             
-            let addr = try IRSockaddr(ip: "127.0.0.1",port: 8080)
+            let addr = try SocketAddress(ip: "127.0.0.1",port: 8080)
             
             try socket.bind(addr)
             
@@ -44,7 +44,7 @@ class SocketBindTest:XCTestCase {
         do{
             let socket = try TCPSocket()
             
-            let addr = try IRSockaddr(ip: "127.5.6.12",port: 8080)
+            let addr = try SocketAddress(ip: "127.5.6.12",port: 8080)
             
             try socket.bind(addr)
             
@@ -58,7 +58,7 @@ class SocketBindTest:XCTestCase {
     
     func testListenSocketBind(){
         do{
-            var socketBind = try IRSocketListener(port: 8888)
+            _ = try TCPServerImplementation.Create(8888)
             XCTAssert(true)
         }catch{
             XCTAssert(false)

@@ -55,6 +55,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
         gesture.enabled = false
         view.addGestureRecognizer(gesture)
         
+        
+        // Connects to server
+        do{
+            try SubscriptionManager.instance.connect(CUPUSMobileBrokerContext.instance.serverIP, serverPort: CUPUSMobileBrokerContext.instance.serverPort)
+        }catch{
+            presentAlert("Subscriber could not connect to the server", message: "Check server IP and port in the settings and try again", controller: self)
+        }
+        
     }
     
     func cancleSelect(){
@@ -71,7 +79,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
     
     func approveSelect(){
         if circle != nil{
-            presentSubscritionValueTable(.Pick)
+            presentSubscritionValueTable(.Pick(center: circle.position, radius: circle.radius))
             
             circleData = CircleData(center: circle.position, radius: circle.radius)
             
@@ -155,7 +163,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
         // Dispose of any resources that can be recreated.
     }
     
-    var newSubsctiption:Subscription?
+    var newSubsctiption:SubscriptionModel?
 
     func plusPressed(){
         
@@ -174,15 +182,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
     
     func presentSubscritionValueTable(type: SubscriptionType){
         let controller = GenericsWireframe.instance.getTableViewController()
-        controller.title = "Select subscription values"
+        controller.title = "Subscription values"
         
         controller.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "CheckmarkWhite"), style: .Plain, target: self, action: #selector(MapViewController.subscriptionValuesSelected))
         
-        self.newSubsctiption = Subscription(type: type)
+        self.newSubsctiption = SubscriptionModel(type: type)
         
         var cells = [IRCellViewModel]()
         
-        for title in SubscriptionOptions.sourceOptions{
+        for title in SensorSubscriptionOptions.allValues{
             cells.append(
                 IRCellViewModel(
                     implementationIdentifier: IRCellIdentifier.OneLabelRightImage,
@@ -194,7 +202,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
         for (index, cell) in cells.enumerate(){
             cell.didSelectCellFunc = {
                 cell.setDataAndUpdateCell([IRCellElementIdentifiers.FirstImage: true])
-                self.newSubsctiption!.optionPressed(SubscriptionOptions.sourceOptions[index])
+                self.newSubsctiption!.optionPressed(SensorSubscriptionOptions.allValues[index])
             }
         }
         
@@ -211,7 +219,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
         }else{
             Wireframe.instance.popViewController(0, animated: true)
             
-            SubscriptionManger.instance.addSubscriptions(newSubsctiption!)
+            SubscriptionManager.instance.addSubscriptions(newSubsctiption!)
         }
     }
     
@@ -221,12 +229,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
         
         var cells = [IRCellViewModel]()
         
-        for subscription in SubscriptionManger.instance.subscriptions{
+        for subscription in SubscriptionManager.instance.subscriptions{
             
             cells.append(
                 IRCellViewModel(
                     implementationIdentifier: IRCellIdentifier.OneLabelRightImage,
-                    data: [IRCellElementIdentifiers.FirstLabel: (subscription.type == .Pick ? "Pick - " : "Follow - ") + subscription.subscriptionTypes.joinWithSeparator(", ")],
+                    data: [IRCellElementIdentifiers.FirstLabel: ((subscription.type == .Follow ? "Follow " : "Pick ") + " - ") + subscription.subscriptionTypes.map({ $0.rawValue }).joinWithSeparator(", ")],
                     didSelectCellFunc: {
                         
                 }))

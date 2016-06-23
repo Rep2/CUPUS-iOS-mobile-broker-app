@@ -8,18 +8,11 @@
 
 import CoreLocation
 
-class SubscriptionOptions{
+enum SensorSubscriptionOptions:String{
+    case CO2 = "CO2"
+    case O2 = "O2"
+    case Noise = "Noise"
+    case Temperature = "Temperature"
     
-    static var sourceOptions = [
-        "CO2",
-        "O2",
-        "Noise",
-        "Temperature"
-    ]
-
-}
-
-struct CircleData{
-    let center: CLLocationCoordinate2D
-    let radius: Double
+    static let allValues = [CO2, O2, Noise, Temperature]
 }
