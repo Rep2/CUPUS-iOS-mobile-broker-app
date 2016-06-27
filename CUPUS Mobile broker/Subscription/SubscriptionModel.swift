@@ -42,17 +42,39 @@ class SubscriptionManager{
     
     var subscriber:Subscriber!
     
-    func addSubscriptions(subscription: SubscriptionModel){
-        subscriptions.append(subscription)
-    }
-    
     
     func connect(serverIP:String, serverPort:UInt16) throws{
         if subscriber == nil{
             subscriber = try Subscriber(serverIP: serverIP, serverPort: serverPort)
         }
         
-        try subscriber.connect()
+        try subscriber.connect(){
+            (success:Bool) -> Void in
+            
+        }
+    }
+    
+    func send(subscription: CUPUSMessage) throws{
+        if subscriber == nil{
+            print("Subscription manager not connected")
+            return
+        }
+        
+        try subscriber.sendSubscription(subscription)
+    }
+    
+    func listen() throws{
+        if subscriber == nil{
+            print("Subscription manager not connected")
+            return
+        }
+        
+        try subscriber.listen()
+    }
+    
+    
+    func addSubscriptions(subscription: SubscriptionModel){
+        subscriptions.append(subscription)
     }
     
 }
@@ -75,21 +97,24 @@ class SubscriptionModel{
         }
     }
     
-    func sendSubscription(){
+    func sendSubscription() throws{
         
         var types = [CUPUSValueType]()
         
-        if subscriptionTypes.contains(SensorSubscriptionOptions.CO2) || subscriptionTypes.contains(SensorSubscriptionOptions.O2) || subscriptionTypes.contains(SensorSubscriptionOptions.Temperature){
-            types.append(CUPUSValueType.CUPUSSensor)
-        }
-        
-        if subscriptionTypes.contains(SensorSubscriptionOptions.Noise){
+        if subscriptionTypes.contains(SensorSubscriptionOptions.NoiseLevel){
             types.append(CUPUSValueType.NoiseSensor)
+            
+            if subscriptionTypes.count > 1{
+                types.append(CUPUSValueType.CUPUSSensor)
+            }
+        }else if subscriptionTypes.count > 0{
+            types.append(CUPUSValueType.CUPUSSensor)
         }
         
         var coordinates = [[Double]]()
         
-        if type == .Follow{
+        switch type{
+        case .Follow:
             LocationManager.instance.getLocation({ (location, success) in
                 
                 if !success{
@@ -104,12 +129,16 @@ class SubscriptionModel{
                 }
                 
             })
-        }else{
-            
+        case let .Pick(center: center, radius: radius):
+            coordinates = createPolygonFromCenterAndDistance(center, distanceInMeters: radius)
         }
-        
+     
         
         let subscription = Subscriber.createSubscriptionModel(types, startTime: Int(NSDate.timeIntervalSinceReferenceDate()), coordinates: coordinates)
+        
+     
+        try SubscriptionManager.instance.send(subscription)
+        
         
     }
     

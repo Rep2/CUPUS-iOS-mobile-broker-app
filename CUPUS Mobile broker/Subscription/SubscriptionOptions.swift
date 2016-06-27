@@ -9,10 +9,14 @@
 import CoreLocation
 
 enum SensorSubscriptionOptions:String{
-    case CO2 = "CO2"
-    case O2 = "O2"
-    case Noise = "Noise"
+
+    case NoiseLevel = "Noise Level"
     case Temperature = "Temperature"
+    case Humidity = "Humidity"
+    case Pressure = "Pressure"
+    case NO2 = "NO2"
+    case SO2 = "SO2"
+    case CO = "CO"
     
-    static let allValues = [CO2, O2, Noise, Temperature]
+    static let allValues = [NoiseLevel, Temperature, Humidity, Pressure, NO2, SO2, CO]
 }

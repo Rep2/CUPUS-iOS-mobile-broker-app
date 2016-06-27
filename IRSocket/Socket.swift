@@ -22,6 +22,8 @@ enum SocketError: ErrorType{
     case ConnectFailed
     case SendError(message: String)
     case RecieveError(message: String)
+    case CloseError
+    case SetKeepAliveError
 }
 
 /// Basic C socket binding
@@ -40,7 +42,6 @@ class Socket{
     }
     
     
-    
     /** Creates new instance of IRSocket containing C socket
      - Returns: IRSocket nil if creation fails
     
@@ -54,6 +55,36 @@ class Socket{
         }
     }
     
+    func keepAlive() throws {        
+        var optval:Int32 = 1
+        var optlen = UInt32(sizeofValue(optval))
+        
+        if(setsockopt(cSocket, SOL_SOCKET, SO_KEEPALIVE, &optval, optlen) < 0) {
+            try closeSocket();
+            throw SocketError.SetKeepAliveError
+        }
+        
+        
+        /* Check the status for the keepalive option */
+        if(getsockopt(cSocket, SOL_SOCKET, SO_KEEPALIVE, &optval, &optlen) < 0)
+        {
+            try closeSocket();
+            throw SocketError.SetKeepAliveError
+
+        }
+        
+        print("SO_KEEPALIVE is \(optval != 0 ? "ON" : "OFF")");
+        
+    }
+    
+    func closeSocket() throws{
+        let success = close(cSocket)
+        
+        if success != 0{
+            throw SocketError.CloseError
+        }
+    }
+
     
     /** 
      Binds socket to addres and updates address
@@ -72,6 +103,8 @@ class Socket{
         }
     }
 
+    
+    
     
     
     /// Updates addr to correct value
@@ -140,12 +173,14 @@ class Socket{
     }
     
     
-    
-    
- 
+
     
     /// Closes socket
     deinit{
-        close(cSocket)
+        do{
+            try closeSocket()
+        }catch{
+            print("Socket close failed")
+        }
     }
 }

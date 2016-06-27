@@ -8,7 +8,7 @@
 import Foundation
 import Unbox
 
-struct Subscription: Unboxable{
+struct CUPUSMessage: Unboxable{
 
 	var payload : Payload
 	var startTime : Int

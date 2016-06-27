@@ -15,14 +15,16 @@ enum TCPSendError: ErrorType{
 
 enum TCPRecieveError: ErrorType{
     case NoBytesRecieved
+    case RecieveStartFailed
 }
 
 protocol TCPClient{
-    func connectTo(address: SocketAddress) throws
+    func connectTo(address: SocketAddress, callback: (success:Bool) -> Void) throws
     
     func send(outString:String) throws -> Int
     
     func recieve() throws -> String
+    func recieveAsync(callback: (String) -> Void) throws
 }
 
 class TCPClientImplementation: TCPSocket, TCPClient{
@@ -34,8 +36,10 @@ class TCPClientImplementation: TCPSocket, TCPClient{
      
      - Throws: 'IRSocketError.SocketCreation' on socket creation failed
      */
-    static func Create(address: SocketAddress) throws -> TCPClient {
-        let clientSocket = try TCPClientImplementation(address: address)
+    static func Create(address: SocketAddress, callback: (success:Bool) -> Void) throws -> TCPClient {
+        let clientSocket = try TCPClientImplementation(address: address, callback: callback)
+        
+     //   try clientSocket.keepAlive()
         
         return clientSocket
     }
@@ -50,6 +54,8 @@ class TCPClientImplementation: TCPSocket, TCPClient{
     static func Create() throws -> TCPClient {
         let clientSocket = try TCPClientImplementation()
         
+    //    try clientSocket.keepAlive()
+        
         return clientSocket
     }
     
@@ -58,10 +64,10 @@ class TCPClientImplementation: TCPSocket, TCPClient{
      
      - Throws: 'IRSocketError.SocketCreation' on socket creation failed
      */
-    private init(address: SocketAddress) throws{
+    private init(address: SocketAddress, callback: (success:Bool) -> Void) throws{
         try super.init()
         
-        try connectTo(address)
+        connectTo(address, callback: callback)
     }
     
     /**
@@ -125,7 +131,9 @@ class TCPClientImplementation: TCPSocket, TCPClient{
                     
                     callback(str)
                 }catch{
-                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        print("Start reviece failed")
+                    })
                 }
             }while(self.continueReciving)
         }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Wrap
 
 class AudioRecordingPresenter: AudioRecorderSubscriber{
     
@@ -27,9 +28,8 @@ class AudioRecordingPresenter: AudioRecorderSubscriber{
     var log = [(NSDate, Float, Float)]()
     
     // Values used to convert read value to SPL
-    private let referenceLevel:Float = 5
-    private let range:Float = 180
-    private let offset:Float = 20
+    private let ps:Float = 20/1000000
+    private let kal:Float = 5
     
     let dateConverter:NSDateFormatter = {
         let formater = NSDateFormatter()
@@ -40,7 +40,7 @@ class AudioRecordingPresenter: AudioRecorderSubscriber{
     
     func reciveAudioRecording(value: Float) {
         
-        let SPL = 20 * log10(referenceLevel * powf(10, (value/20)) * range) + offset
+        let SPL = 20 * log10(pow(10, (value/20)) / ps) + kal
         
         currentValue = SPL
         dateRead = NSDate()
@@ -60,6 +60,34 @@ class AudioRecordingPresenter: AudioRecorderSubscriber{
             let fileurl =  dir.URLByAppendingPathComponent("CUPUSAudioRecordingLog.txt")
        
             try "\(dateConverter.stringFromDate(dateRead)) value: \(value), converted value: \(SPL)".appendLineToURL(fileurl)
+            
+          /*  LocationManager.instance.getLocation({ (location, success) in
+                
+                if !success{
+                    print("could not get last location")
+                }else{
+                    
+                    if let location = location{
+                        let message = CUPUSPublisher.createPublication(CUPUSValueType.CUPUSSensor, startTime: Int(NSDate.timeIntervalSinceReferenceDate()), coordinates: [location.coordinate.latitude, location.coordinate.longitude])
+                        
+                        do{
+                            try PublicationsManager.instance.send(message)
+                            
+                            let str = NSString(data: try Wrap(message), encoding: NSUTF8StringEncoding)! as String
+                            
+                            writeToLog(LogFiles.Publisher.rawValue, content: "Sent publication " + str + " \(NSDate())")
+                        }catch{
+                            writeToLog(LogFiles.Publisher.rawValue, content: "FAILED: Sent publication \(NSDate())")
+                        }
+                    }else{
+                        print("location not sent")
+                    }
+                }
+                
+                
+            })*/
+            
+            
         }
         catch {
             print("Could not write to file")

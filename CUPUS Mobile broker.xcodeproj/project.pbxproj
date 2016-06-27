@@ -72,6 +72,8 @@
 		ADA4565C1D1AEB7800FD9187 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4565B1D1AEB7800FD9187 /* Context.swift */; };
 		ADA4565E1D1AF01700FD9187 /* TCPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4565D1D1AF01700FD9187 /* TCPClient.swift */; };
 		ADA456601D1B0D1F00FD9187 /* CUPUSTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA4565F1D1B0D1F00FD9187 /* CUPUSTest.swift */; };
+		ADF8F3E71D1C9C4E0057CC1E /* CUPUSPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF8F3E61D1C9C4E0057CC1E /* CUPUSPublisher.swift */; };
+		ADF8F3E91D1C9E5D0057CC1E /* PublicationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF8F3E81D1C9E5D0057CC1E /* PublicationsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +173,8 @@
 		ADA4565B1D1AEB7800FD9187 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		ADA4565D1D1AF01700FD9187 /* TCPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPClient.swift; sourceTree = "<group>"; };
 		ADA4565F1D1B0D1F00FD9187 /* CUPUSTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CUPUSTest.swift; sourceTree = "<group>"; };
+		ADF8F3E61D1C9C4E0057CC1E /* CUPUSPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CUPUSPublisher.swift; path = "CUPUS Swift Mobile Broker/Publisher/CUPUSPublisher.swift"; sourceTree = "<group>"; };
+		ADF8F3E81D1C9E5D0057CC1E /* PublicationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublicationsManager.swift; path = Publications/PublicationsManager.swift; sourceTree = "<group>"; };
 		B5FDE4C30871BEDB41C58784 /* Pods_SocketTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocketTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDE4A3C5D15BB002046CDA84 /* Pods_CUPUS_Mobile_brokerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CUPUS_Mobile_brokerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE46A49C9AF1AF52A5097F54 /* Pods-CUPUS Mobile brokerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CUPUS Mobile brokerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CUPUS Mobile brokerTests/Pods-CUPUS Mobile brokerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 				3E318DC81CE201DB006F99B6 /* Sensors */,
 				3E03078C1CE33E21003CCA3F /* SensorsDetector.swift */,
 				3E318DCB1CE20211006F99B6 /* PublishViewController.swift */,
+				ADF8F3E81D1C9E5D0057CC1E /* PublicationsManager.swift */,
 			);
 			name = Publications;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 		AD02BFF91D1B135500EF653B /* CUPUS Swift Mobile Broker */ = {
 			isa = PBXGroup;
 			children = (
+				ADF8F3E51D1C9C3A0057CC1E /* Publisher */,
 				AD02BFFF1D1B1C2C00EF653B /* Model */,
 				AD02BFFC1D1B15DF00EF653B /* Subscriber */,
 				AD02BFFA1D1B137A00EF653B /* CUPUSMobileBrokerContext.swift */,
@@ -514,6 +520,14 @@
 				AD02C0041D1B1C3500EF653B /* Subscription.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		ADF8F3E51D1C9C3A0057CC1E /* Publisher */ = {
+			isa = PBXGroup;
+			children = (
+				ADF8F3E61D1C9C4E0057CC1E /* CUPUSPublisher.swift */,
+			);
+			name = Publisher;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -875,6 +889,7 @@
 				3EFEE30C1D058C4B00215EA8 /* IRSocketReader.swift in Sources */,
 				AD02C0061D1B1C3500EF653B /* Geometry.swift in Sources */,
 				AD07AA971D1BA71600DE4408 /* RandomString.swift in Sources */,
+				ADF8F3E91D1C9E5D0057CC1E /* PublicationsManager.swift in Sources */,
 				3E68D5CA1CCE4621002C8D63 /* GenericViewControllerDecorator.swift in Sources */,
 				3E49F54A1CEB3206005EE3BF /* DetectBluetoothViewController.swift in Sources */,
 				AD07AA991D1BD75B00DE4408 /* CLLocationFromDistance.swift in Sources */,
@@ -889,6 +904,7 @@
 				3E68D5C21CCE45F8002C8D63 /* IRSectionViewModel.swift in Sources */,
 				3E318DD31CE20EB0006F99B6 /* AudioRecorderViewController.swift in Sources */,
 				3EBD20D51CCE205100905452 /* AppDelegate.swift in Sources */,
+				ADF8F3E71D1C9C4E0057CC1E /* CUPUSPublisher.swift in Sources */,
 				3E68D5C31CCE45F8002C8D63 /* IRTableView.swift in Sources */,
 				AD02C00B1D1B3F4F00EF653B /* SubscriptionModel.swift in Sources */,
 				3E318DCC1CE20211006F99B6 /* PublishViewController.swift in Sources */,

@@ -18,6 +18,14 @@ class PublishViewController: UIViewController{
         super.init(coder: aDecoder)
         
         SensorsDetector.instance = SensorsDetector(controller: self)
+        
+        do{
+            try PublicationsManager.instance.connect()
+            
+            writeToLog(LogFiles.Publisher.rawValue, content: "Publisher connected to server \(NSDate())")
+        }catch{
+            writeToLog(LogFiles.Publisher.rawValue, content: "FAILED: Publisher connected to server \(NSDate())")
+        }
     }
     
     override func viewDidLoad() {

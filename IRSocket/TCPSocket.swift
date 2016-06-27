@@ -27,13 +27,20 @@ class TCPSocket: Socket{
      
      - Throws: 'SocketError.ConnectFailed' on failed connect
     */
-    func connectTo(address: SocketAddress) throws{
-        let connectSuccess = withUnsafePointer(&address.cSockaddr) {
-            connect(cSocket, UnsafePointer<sockaddr>($0), 16)
-        }
+    func connectTo(address: SocketAddress, callback: (success:Bool) -> Void){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { 
+            let connectSuccess = withUnsafePointer(&address.cSockaddr) {
+                connect(self.cSocket, UnsafePointer<sockaddr>($0), 16)
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), { 
+                if connectSuccess != 0{
+                    callback(success: false)
+                }else{
+                    callback(success: true)
+                }
+            })
         
-        if connectSuccess != 0{
-            throw SocketError.ConnectFailed
         }
     }
     

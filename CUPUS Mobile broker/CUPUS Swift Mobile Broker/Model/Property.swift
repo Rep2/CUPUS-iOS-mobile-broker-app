@@ -8,19 +8,53 @@
 import Foundation
 import Unbox
 
-struct Property: Unboxable{
+class Property: Unboxable{
+    required init(unboxer: Unboxer){
+    }
+    
+    init(){
+        
+    }
+}
 
+class SubscriptionProperty: Property{
     var predicateMap : [String]
     var stringAttributeBorders : StringAttributeBorder
     
-    init(unboxer: Unboxer){
+    required init(unboxer: Unboxer){
         self.predicateMap = unboxer.unbox("predicateMap")
         self.stringAttributeBorders = unboxer.unbox("stringAttributeBorders")
+        
+        super.init(unboxer: unboxer)
     }
     
     init(predicateMap : [String], stringAttributeBorders : StringAttributeBorder){
         self.predicateMap = predicateMap
         self.stringAttributeBorders = stringAttributeBorders
+        
+        super.init()
+    }
+}
+
+class PublicationProperty: Property{
+    var Type: String
+    var ID: String
+    var co: String
+    
+    required init(unboxer: Unboxer){
+        self.Type = unboxer.unbox("type")
+        self.ID = unboxer.unbox("id")
+        self.co = unboxer.unbox("co")
+        
+        super.init(unboxer: unboxer)
+    }
+    
+    init(type:String, id:String, co:String){
+        self.Type = type
+        self.ID = id
+        self.co = co
+        
+        super.init()
     }
 }
 

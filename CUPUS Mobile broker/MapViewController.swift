@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import Wrap
 
 class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecognizerDelegate{
     
@@ -59,7 +60,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
         // Connects to server
         do{
             try SubscriptionManager.instance.connect(CUPUSMobileBrokerContext.instance.serverIP, serverPort: CUPUSMobileBrokerContext.instance.serverPort)
+            
+            writeToLog(LogFiles.Subscriber.rawValue, content: "Connected to \(CUPUSMobileBrokerContext.instance.serverIP) \(CUPUSMobileBrokerContext.instance.serverPort) \(NSDate())")
         }catch{
+            writeToLog(LogFiles.Subscriber.rawValue, content: "FAILED: Connected to \(CUPUSMobileBrokerContext.instance.serverIP) \(CUPUSMobileBrokerContext.instance.serverPort) \(NSDate())")
             presentAlert("Subscriber could not connect to the server", message: "Check server IP and port in the settings and try again", controller: self)
         }
         
@@ -194,7 +198,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
             cells.append(
                 IRCellViewModel(
                     implementationIdentifier: IRCellIdentifier.OneLabelRightImage,
-                    data: [IRCellElementIdentifiers.FirstLabel:title,
+                    data: [IRCellElementIdentifiers.FirstLabel:title.rawValue,
                         IRCellElementIdentifiers.FirstImage:"Checkmark"]))
             
         }
@@ -220,6 +224,26 @@ class MapViewController: UIViewController, GMSMapViewDelegate, UIGestureRecogniz
             Wireframe.instance.popViewController(0, animated: true)
             
             SubscriptionManager.instance.addSubscriptions(newSubsctiption!)
+            
+            do{
+                try newSubsctiption!.sendSubscription()
+                
+                let subsMsg = String(data: try Wrap(newSubsctiption!), encoding: NSUTF8StringEncoding)! as String
+                
+                print(subsMsg)
+                writeToLog(LogFiles.Subscriber.rawValue, content: "subscription \(subsMsg)) \(NSDate())")
+                
+                
+            }catch{
+                writeToLog(LogFiles.Subscriber.rawValue, content: "FAILED: subscription \(newSubsctiption!) \(NSDate())")
+                presentAlert("Could not send subscription to server", controller: self)
+            }
+            
+            do{
+                try SubscriptionManager.instance.listen()
+            }catch{
+                writeToLog(LogFiles.Subscriber.rawValue, content: "FAILED: subscriber start listen \(NSDate())")
+            }
         }
     }
     
