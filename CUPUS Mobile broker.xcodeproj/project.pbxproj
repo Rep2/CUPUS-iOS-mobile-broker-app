@@ -627,7 +627,7 @@
 				TargetAttributes = {
 					3EBD20D01CCE205000905452 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = UQ456767XG;
+						DevelopmentTeam = VVAK2SR2GT;
 					};
 					3EBD20E41CCE205100905452 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1118,7 +1118,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DE46A49C9AF1AF52A5097F54 /* Pods-CUPUS Mobile brokerTests.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
@@ -1137,7 +1136,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81AECA9A85FFDE9D977EFE17 /* Pods-CUPUS Mobile brokerTests.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
